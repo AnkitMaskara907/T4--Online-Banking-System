@@ -1,20 +1,20 @@
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import React from 'react';
-// import './ButtonCentering.css'; 
-import './App.css';
+import { Link } from "react-router-dom"; 
+import './Home.css';
 
-function App() {
+function Home() {
   return (
-    <div className="App" style={{
+    <div className="Home" style={{
       minHeight: '5vh'
     }}>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="Home-header">
+        <img src={logo} className="Home-logo" alt="logo" />
         <h1>Wells Online Banking</h1>
       </header>
       <section>
         <div class="body" style={{
-          minHeight:"70vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
+          minHeight:"80vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
           backgroundSize: "250vh"        
         }}>
       <div class="columns" style={{
@@ -23,12 +23,12 @@ function App() {
         <div class="ButtonCentering" style={{
         minHeight:"60vh", border:"none"
       }}>
-        <button>Login</button>
+        <Link to="/login"><button>Login</button></Link>
         </div>
         <div class="ButtonCentering" style={{
         minHeight:"60vh", border:"none"
       }}>
-        <button>Register</button>
+        <Link to="/register"><button>Register</button></Link>
         </div>
         <div class="ButtonCentering" style={{
         minHeight:"60vh", border:"none"
@@ -46,4 +46,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
