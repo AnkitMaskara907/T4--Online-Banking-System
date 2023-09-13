@@ -1,79 +1,42 @@
 import {  useState } from "react";
 import axios from "axios";
+import "../styles/Register.css";
 
 function Register() {
-  
-    const [employeename, setEmployeename] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+     
+  return (
+    <div class="bgpicture"  style={{
+        minHeight:"100vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
+        backgroundSize: "250vh"        
+      }}>
+       <div class = "parent">
+            <div class="heading">
+                <h2>Register</h2>
+                <hr/>
+            </div>
 
-
-    async function save(event) {
-        event.preventDefault();
-        try {
-          await axios.post("http://localhost:8085/api/v1/employee/save", {
-          employeename: employeename,
-          email: email,
-          password: password,
-          });
-          alert("Employee Registation Successfully");
-
-        } catch (err) {
-          alert(err);
-        }
-      }
-  
-    return (
-    <div>
-    <div class="container mt-4" >
-    <div class="card">
-            <h1>Student Registation</h1>
-    
-    <form>
-        <div class="form-group">
-          <label>Employee name</label>
-          <input type="text"  class="form-control" id="employeename" placeholder="Enter Name"
-          
-          value={employeename}
-          onChange={(event) => {
-            setEmployeename(event.target.value);
-          }}
-          />
-
+        <form>
+        <div class="email">
+            <h4>Email</h4>
+            <input type="email"  class="user-box" id="email" placeholder="example@xyz.com"/>
         </div>
-
-        <div class="form-group">
-          <label>email</label>
-          <input type="email"  class="form-control" id="email" placeholder="Enter Email"
-          
-          value={email}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-          
-          />
- 
+        
+        <div class="password">
+            <h4>Password</h4>
+            <input type="password"  class="user-box" id="password" placeholder="Enter Password"/>
         </div>
-
-        <div class="form-group">
-            <label>password</label>
-            <input type="password"  class="form-control" id="password" placeholder="Enter password"
-            
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-            
-            />
-          </div>
-
-        <button type="submit" class="btn btn-primary mt-4" onClick={save} >Save</button>
-       
-      </form>
+        <div class="password">
+            <h4>Confirm Password</h4>
+            <input type="password"  class="user-box" id="password" placeholder="Confirm Password"/>
+        </div>
+        <div class="btn">
+            <button type="submit" class="btn-grp">Register</button>
+        </div>
+        </form>
+        </div>
     </div>
-    </div>
-     </div>
     );
+
   }
   
   export default Register;
