@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Routes,
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Account from "./components/Account";
 
-function App() {
+const App = () => {
 return (
 	<>
 	{/* This is the alias of BrowserRouter i.e. Router */}
@@ -16,6 +17,7 @@ return (
 		<Route exact path="/" element={<Home />} />
 		<Route exact path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>} />
+		<Route path="/account" element={<Account/>} />
 
 			
 		{/* <Redirect to="/" /> */}

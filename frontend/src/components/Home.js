@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom"; 
 import '../styles/Home.css';
 
-function Home() {
+const Home = () => {
   return (
     <div className="Home" style={{
       minHeight: '5vh'
@@ -33,7 +33,7 @@ function Home() {
         <div class="ButtonCentering" style={{
         minHeight:"60vh", border:"none"
       }}>
-        <button>Open new account</button>
+        <Link to="/account"><button>Open new account</button></Link>
         </div>
       </div>
       </div>

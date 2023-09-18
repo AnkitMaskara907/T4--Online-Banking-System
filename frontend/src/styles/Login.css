@@ -1,57 +1,28 @@
-.parent {
-    background: linear-gradient(#141e30, #243b55);
-    height: 400px;
-    width: 350px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+/* Login.css */
+.container {
+    /* position: relative;
+    clear: both;
+    margin-top: 40px; */
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-.heading h2{
-    color: white;
-    font-weight: 750;
-    font-family: sans-serif;
-    text-align: center;
-}
-
-.email h4{
-    color: white;
-    font-weight: 750;
-    font-family: sans-serif;
-    text-align: center;
-}
-
-.password h4{
-    color: white;
-    font-weight: 750;
-    font-family: sans-serif;
-    text-align: center;
-}
-
-.user-box{
-    width: 80%;
-    padding: 10px 0;
-    font-size: 16px;
-    margin-bottom: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid #fff; 
-}
-
-.btn {
-    margin-left: 100px;
-}
-
-.btn-grp{
-    align-items: center;
-    background-color: #04AA6D; 
-    border: 1px solid green; 
-    color: white; 
-    padding: 10px 24px; 
-    cursor: pointer; 
-    width: 100%;
-    font-weight: bold;
-    
+  
+  .form-group {
+    margin-bottom: 15px;
   }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .success-message {
+    color: green;
+    margin-top: 10px;
+  }
+  
