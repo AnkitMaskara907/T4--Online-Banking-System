@@ -1,23 +1,25 @@
 import logo from '../logo.svg';
 import React from 'react';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import '../styles/Home.css';
+import NavBar from './NavBar';
 
 const Home = () => {
   return (
     <div className="Home" style={{
       minHeight: '5vh'
     }}>
-      <header className="Home-header">
+      <NavBar/>
+      {/* <header className="Home-header">
         <img src={logo} className="Home-logo" alt="logo" />
         <h1>Wells Online Banking</h1>
-      </header>
+      </header> */}
       <section>
         <div class="body" style={{
           minHeight:"80vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
-          backgroundSize: "250vh"        
+          backgroundSize: "250vh"
         }}>
-      <div class="columns" style={{
+      {/* <div class="columns" style={{
         border:"none"
       }}>
         <div class="ButtonCentering" style={{
@@ -35,7 +37,7 @@ const Home = () => {
       }}>
         <Link to="/account"><button>Open new account</button></Link>
         </div>
-      </div>
+      </div> */}
       </div>
       </section>
       <footer className="footer">

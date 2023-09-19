@@ -22,19 +22,19 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository urepo;
-	
+
 	public User saveUser(User u) {
 		return urepo.save(u);
 	}
-	
-	public List<User> listAll()
-	{
+
+	public List<User> listAll() {
 		return urepo.findAll();
 	}
-	public Optional<User> loginUser(String email){
+
+	public Optional<User> loginUser(String email) {
 		return urepo.findByEmail(email);
 	}
 }
