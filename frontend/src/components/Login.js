@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import logo from '../logo.svg';
 import '../styles/Login.css';
 import AuthenticationService from "../service/AuthenticationService";
 import { useNavigate } from "react-router-dom";
@@ -19,14 +19,14 @@ const handleLogin= async ()=>{
     setErrorMessage('Please enter both email or Password');
     return ;
   }
-  const dealer={email,password};
+  const user={email,password};
   try{
-      const loginSuccess=await AuthenticationService.login(dealer);// invoke service method
+      const loginSuccess=await AuthenticationService.login(user);// invoke service method
       console.log('Await Response: ',loginSuccess);
       if(loginSuccess){
         setSuccessMessage('login Successful ! Redirecting .....');
         setTimeout(()=>{
-          history('/product');
+          history('/');
         },3000)
 
       }
@@ -42,19 +42,15 @@ const handleLogin= async ()=>{
 }
 
   return (
-    <div>
-        <br/><br/>
-        <div className='container' style={{
-        minHeight:"100vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
-        backgroundSize: "250vh"        
-      }}>
-            <h2 style={{color:'green'}}>Dealer Login</h2>
+        <div className='login-container' style = {{backgroundColor:"white", marginTop: "100px"}}>
+            
             <div className="form-group">
-                <label>Email :</label>
+                <label>Email</label>
                 <input type='email' className="form-control" value={email} onChange={(e) => setEmail(e.target.value)}></input>
             </div>
+            
             <div className="form-group">
-                <label>Password :</label>
+                <label>Password</label>
                 <input type='password' className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}></input>
             </div>
             <button className="btn btn-primary" onClick={handleLogin}>Login</button>
@@ -62,7 +58,7 @@ const handleLogin= async ()=>{
             {successMessage && <p className='success-message'>{successMessage}</p>}
         </div>
         
-    </div>
+   
   )
 }
 

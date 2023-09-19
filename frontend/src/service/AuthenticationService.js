@@ -15,10 +15,10 @@ Once the request is made we get the data in Return, and then we use this data in
 */
 class AuthenticationService{
 
-    static async login(dealer){
+    static async login(user){
         try{
-            const response=await axios.post('http://localhost:8085/ims/api/loginDealer',dealer);
-            if(response.data=== true){
+            const response=await axios.post('http://localhost:8085/obs/api/loginUser',user);
+            if(response.data===true){
                 return true;
             }
             return false;
@@ -27,9 +27,9 @@ class AuthenticationService{
             console.error('Login Error :', error);
         }
     }
-    static async registerDealer(dealer){
+    static async registerUser(user){
         try{
-            const response=await axios.post('http://localhost:8085/ims/api/register',dealer);
+            const response=await axios.post('',user);
             return response.data;
         }
         catch(error){

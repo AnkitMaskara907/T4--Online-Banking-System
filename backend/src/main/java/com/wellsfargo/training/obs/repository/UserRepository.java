@@ -1,5 +1,7 @@
 package com.wellsfargo.training.obs.repository;
 
+import java.util.Optional;
+
 /**
  * 
  * @author rajgs
@@ -20,4 +22,5 @@ public interface UserRepository extends JpaRepository<User, Long>{
 		       etc.. inbuilt methods of jpa repository for various database operations.
 		       This interface will be implemented by class automatically
 		    */
+	public Optional<User> findByEmail(String email);
 }

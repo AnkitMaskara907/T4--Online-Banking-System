@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wellsfargo.training.obs.exception.ResourceNotFoundException;
 import com.wellsfargo.training.obs.model.User;
 import com.wellsfargo.training.obs.service.UserService;
 
@@ -20,47 +22,60 @@ import com.wellsfargo.training.obs.service.UserService;
  * @RequestMapping - maps HTTP request with a path to a controller 
  * */
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api")
 public class UserController {
-	
-	//Open - http://localhost:8085/obs/api/welcome
-	
-	@GetMapping("/welcome")
-	public String demo()
-	{
+
+	// Open - http://localhost:8085/obs/api/welcome1
+
+	@GetMapping("/welcome1")
+	public String demo() {
 		return "Welcome to OBS";
 	}
-	
-	//Open PostMan, make a POST Request - http://localhost:8085/obs/api/users
-    //Select body -> raw -> JSON 
-    //Insert JSON product object.
+
+	// Open PostMan, make a POST Request - http://localhost:8085/obs/api/users
+	// Select body -> raw -> JSON
+	// Insert JSON product object.
 	@Autowired
 	private UserService uservice;
 
 	@PostMapping("/users")
 	public User saveUser(@Validated @RequestBody User user) {
 		try {
-			User u=uservice.saveUser(user);
+			User u = uservice.saveUser(user);
 			return u;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-	//Open PostMan, make a GET Request - http://localhost:8085/obs/api/users
+
+	// Open PostMan, make a GET Request - http://localhost:8085/obs/api/users
 	@GetMapping("/users")
-	public List<User> getAllUsers(){
+	public List<User> getAllUsers() {
 		try {
 			return uservice.listAll();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+	// Open PostMan --> Post Request with email & password -
+	// http://localhost:8085/obs/api/loginUser
+
+@PostMapping("/loginUser")
+public Boolean loginUser(@Validated @RequestBody User user) throws ResourceNotFoundException {
+	Boolean isLoggedIn=false;
+	String email=user.getEmail();
+	String password=user.getPassword();
 	
+	User u=uservice.loginUser(email).orElseThrow(() ->
+	new ResourceNotFoundException("User Not Found for this ID ::"));
+	
+	if(email.equals(u.getEmail()) && password.equals(u.getPassword())) {
+		isLoggedIn=true;
+	}
+	return isLoggedIn;
+	}
 }

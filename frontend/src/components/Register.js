@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Register.css';
 import AuthenticationService from '../service/AuthenticationService';
+import logo from '../logo.svg';
 
 const Register = () => {
   const history = useNavigate();  // Object to navigate 
@@ -121,9 +122,17 @@ const validateForm = () => {
 
 
   return (
+    <div  style={{
+      minHeight:"100vh", backgroundImage: "url(https://img.freepik.com/premium-photo/online-banking-digital-money-technology-conceptual_31965-22271.jpg?w=1060)",
+      backgroundSize: "300vh"        
+    }}>
+      <header className="Home-header">
+    <img src={logo} className="Home-logo" alt="logo" />
+    <h1>Wells Online Banking</h1>
+  </header>
     <div><br/>
       <div className='registration-container'>
-        <h2 style={{color:'brown'}}>Dealer Registration</h2>
+        <h2 style={{color:'black'}}>Registration</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -151,6 +160,18 @@ const validateForm = () => {
 
         <div className="form-group">
           <label>Last Name:</label>
+          <input
+            type="text"
+            name="lname"
+            value={dealer.lname}
+            onChange={handleChange}
+            className={errors.lname && 'error'}
+          />
+          {errors.lname && <p className="error-message">{errors.lname}</p>}
+        </div>
+
+        <div className="form-group">
+          <label>PAN Number:</label>
           <input
             type="text"
             name="lname"
@@ -240,6 +261,7 @@ const validateForm = () => {
         </div>
         </form>
       </div>
+    </div>
     </div>
   )
 }
