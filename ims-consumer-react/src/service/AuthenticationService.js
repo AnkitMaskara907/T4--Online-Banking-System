@@ -28,7 +28,7 @@ class AuthenticationService{
         }
     }
 
-    static async registerdealer(dealer){
+    static async registerDealer(dealer){
         try{
             const response = await axios.post('http://localhost:8085/ims/api/loginDealer', dealer);
             return response.data;

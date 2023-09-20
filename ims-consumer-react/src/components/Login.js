@@ -26,7 +26,7 @@ const Login = () => {
             {
                 setSuccessMessage('Login Successful, Redirecting....');
                 setTimeout(() => {
-                    history('/about');
+                    history('/product');
                 }, 3000);
             }
             else{

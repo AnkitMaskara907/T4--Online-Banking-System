@@ -15,6 +15,12 @@ const NavBar = () =>{
         <nav className="navbar">
             <ul className="nav-list">
                 <li className="nav-item">
+                    <Link to ="/product" className = "nav-link">
+                    <span><FontAwesomeIcon icon = "bomb"></FontAwesomeIcon></span> &nbsp;    
+                    Products</Link>
+                </li>
+
+                <li className="nav-item">
                     <Link to ="/register" className = "nav-link">
                     <span><FontAwesomeIcon icon = "camera-retro"></FontAwesomeIcon></span> &nbsp;
                     Register</Link>

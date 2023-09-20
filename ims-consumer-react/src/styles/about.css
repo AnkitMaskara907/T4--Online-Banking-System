@@ -1,0 +1,49 @@
+/* About.css */
+
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.about-us-column {
+    flex-basis: calc(50% - 20px);
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.about-us-column h2 {
+    color: #333;
+}
+
+.about-us-column p {
+    color: #666;
+}
+
+.about-us-merge {
+    flex-basis: 100%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    text-align: center;
+}
+
+.about-us-merge .merged-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-us-merge h2 {
+    color: #333;
+}
+
+.about-us-merge p {
+    color: #666;
+}
+
