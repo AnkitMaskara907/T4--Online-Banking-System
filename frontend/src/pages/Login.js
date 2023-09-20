@@ -26,7 +26,7 @@ const Login = () => {
       if (loginSuccess) {
         setSuccessMessage("login Successful ! Redirecting .....");
         setTimeout(() => {
-          history("/");
+          history("/account-details");
         }, 3000);
       } else {
         setErrorMessage("Invalid Email or Password ");
