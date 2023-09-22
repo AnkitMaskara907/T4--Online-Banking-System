@@ -19,7 +19,7 @@ class AuthenticationService{
     //service method for performing a login
     static async login(dealer){
         try{
-            const response = await axios.post('http://localhost:8085/ims/api/loginDealer', dealer);
+            const response = await axios.post('http://localhost:8085/obs/api/loginUser', dealer);
             return response.data;
         }
         catch(error){
@@ -27,9 +27,9 @@ class AuthenticationService{
         }
     }
 
-    static async registerdealer(dealer){
+    static async registeruser(user){
         try{
-            const response = await axios.post('http://localhost:8085/ims/api/regsiter', dealer);
+            const response = await axios.post('http://localhost:8085/obs/api/users', user);
             return response.data;
         }
         catch(error){

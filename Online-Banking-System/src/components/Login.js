@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../styles/Login.css'
 import AuthenticationService from '../service/AuthenticationService'
+import NavBar from './NavBar';
 
 const Login = () => {
     //defining state for email and password
@@ -26,7 +27,7 @@ const Login = () => {
             {
                 setSuccessMessage('Login Successful, Redirecting....');
                 setTimeout(() => {
-                    history('/about');
+                    history('/sideBar');
                 }, 3000);
             }
             else{
@@ -38,9 +39,9 @@ const Login = () => {
             setErrorMessage('An error occured during login');
         }
     }
-
+//C:\ReactProjects\Team project\T4--Online-Banking-System\Online-Banking-System\src\components\Login.js
   return (
-    <div> <br/><br/>
+    <div><NavBar></NavBar> <br/><br/>
         <div className ='login-container'>
             <h2 style = {{color: 'green'}}>Dealer Login</h2>
             <div className ='form-group'>

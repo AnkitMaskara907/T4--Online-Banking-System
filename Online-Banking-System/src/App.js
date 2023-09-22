@@ -9,6 +9,7 @@ import Login from './components/Login';
 import About from './components/about';
 import Product from './components/Product';
 import Home from './components/Home';
+import Sidebar from "./components/Sidebar";
 library.add(faSignIn, faCameraRetro, faCoffee);
 
 /*
@@ -44,13 +45,13 @@ function App() {
           minWidth:'100vw', margin: '0', padding:'1px'
         }}>
           <Router>
-            <NavBar></NavBar>  
+            {/* <NavBar></NavBar>   */}
             <Routes>
-              <Route path='/home' element ={<Home/>}></Route>
+              <Route path='/' element ={<Home/>}></Route>
               <Route path='/register' element = {<Register/>}></Route>
               <Route path='/login' element = {<Login/>}></Route>
               <Route path='/about' element = {<About/>}></Route>
-              <Route path='/product' element = {<Product/>}></Route>
+              <Route path="/sideBar" element={<Sidebar/>}/>
             </Routes>  
           </Router>
         </div>

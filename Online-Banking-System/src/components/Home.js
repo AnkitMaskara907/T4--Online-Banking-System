@@ -7,7 +7,7 @@ import RegisterSVG from "../Abstracts/RegisterSVG";
 import "../styles/RegisterSVG.css";
 import "../styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import NavBar from './NavBar';
 import { Parallax } from 'react-scroll-parallax';
 
 const low={
@@ -33,8 +33,10 @@ const Home = () => {
     window.location.href = targetUrl;
   };
   return (
+    
     <Container className="container-lg" style={{backgroundColor:"inherit"}}>
        {/* <Parallax speed={-70}> */}
+       <div><NavBar></NavBar></div>
       <motion.div className="banner"
         initial={{ opacity: 0,y: 500, rotate: -90 }}
         animate={{ opacity: 1,y: -100 }}

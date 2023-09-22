@@ -7,18 +7,9 @@ const Register = () => {
   const history = useNavigate();  // Object to navigate 
 
   //defining state for dealer object
-  const [dealer, setDealer] = useState({
+  const [user, setUser] = useState({
     email: '',
-    fname: '',
-    lname: '',
     password: '',
-    dob: '',
-    phoneNo: '',
-    address: {
-      street: '',
-      city: '',
-      pincode: ''
-    }
   });
 
   const [errors, setErrors] = useState({});
@@ -32,16 +23,16 @@ const handleChange = (e) => {
   const { name, value } = e.target;
   if (name.includes('.')) {   
     const [parent, child] = name.split('.');
-    setDealer((prevDealer) => ({
-      ...prevDealer,
+    setUser((prevUser) => ({
+      ...prevUser,
       [parent]: {
-        ...prevDealer[parent],
+        ...prevUser[parent],
         [child]: value
       }
     }));
   } else {
-    setDealer((prevDealer) => ({
-      ...prevDealer,
+    setUser((prevUser) => ({
+      ...prevUser,
       [name]: value
     }));
   }
@@ -52,7 +43,7 @@ const handleSubmit = async (e) => {
   const validationErrors = validateForm();
   if (Object.keys(validationErrors).length === 0) {
     try {
-      await AuthenticationService.registerdealer(dealer);
+      await AuthenticationService.registeruser(user);
       setSuccessMessage('Registration successful!');
       alert("Registration Successfull");
       setTimeout(() => {
@@ -72,47 +63,47 @@ const handleSubmit = async (e) => {
 const validateForm = () => {
   let validationErrors = {};
 
-  if (!dealer.email) {
+  if (!user.email) {
     validationErrors.email = 'Email is required.';
   }
-  if (!dealer.fname) {
-    validationErrors.fname = 'First name is required.';
-  }
-    else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
-      validationErrors.fname = 'Enter Alphabets Only';
-    }
+  // if (!dealer.fname) {
+  //   validationErrors.fname = 'First name is required.';
+  // }
+  //   else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
+  //     validationErrors.fname = 'Enter Alphabets Only';
+  //   }
 
-  if (!dealer.lname) {
-    validationErrors.lname = 'Last name is required.';
-  }
+  // if (!dealer.lname) {
+  //   validationErrors.lname = 'Last name is required.';
+  // }
 
-  if (!dealer.password) {
+  if (!user.password) {
     validationErrors.password = 'Password is required.';
-  } else if (dealer.password.length < 6) {
+  } else if (user.password.length < 6) {
     validationErrors.password = 'Password must be at least 6 characters.';
   }
 
-   if (!dealer.dob) {
-    validationErrors.dob = 'Date of Birth is required.';
-  } 
+  //  if (!dealer.dob) {
+  //   validationErrors.dob = 'Date of Birth is required.';
+  // } 
 
-  if (!dealer.phoneNo) {
-    validationErrors.phoneNo = 'Phone number is required.';
-  } else if (!/^\d{10}$/.test(dealer.phoneNo)) {
-    validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
-  }
+  // if (!dealer.phoneNo) {
+  //   validationErrors.phoneNo = 'Phone number is required.';
+  // } else if (!/^\d{10}$/.test(dealer.phoneNo)) {
+  //   validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
+  // }
   
-  if (!dealer.address.street) {
-    validationErrors['address.street'] = 'Street is required.';
-  }
+  // if (!dealer.address.street) {
+  //   validationErrors['address.street'] = 'Street is required.';
+  // }
 
-  if (!dealer.address.city) {
-    validationErrors['address.city'] = 'City is required.';
-  }
+  // if (!dealer.address.city) {
+  //   validationErrors['address.city'] = 'City is required.';
+  // }
 
-  if (!dealer.address.pincode) {
-    validationErrors['address.pincode'] = 'Pin Code is required.';
-  }
+  // if (!dealer.address.pincode) {
+  //   validationErrors['address.pincode'] = 'Pin Code is required.';
+  // }
 
   return validationErrors;
 };
@@ -122,7 +113,7 @@ const validateForm = () => {
   return (
     <div><br/>
       <div className='registration-container'>
-        <h2 style={{color:'brown'}}>Dealer Registration</h2>
+        <h2 style={{color:'brown'}}>User Registration</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -130,13 +121,13 @@ const validateForm = () => {
           <input
             type="email"
             name="email"
-            value={dealer.email}
+            value={user.email}
             onChange={handleChange}
             className={errors.email && 'error'}
           />
           {errors.email && <p className="error-message">{errors.email}</p>}
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>First Name:</label>
           <input
             type="text"
@@ -158,14 +149,14 @@ const validateForm = () => {
             className={errors.lname && 'error'}
           />
           {errors.lname && <p className="error-message">{errors.lname}</p>}
-        </div>
+        </div> */}
 
         <div className="form-group">
           <label>Password:</label>
           <input
             type="password"
             name="password"
-            value={dealer.password}
+            value={user.password}
             onChange={handleChange}
             className={errors.password && 'error'}
           />
@@ -173,6 +164,17 @@ const validateForm = () => {
         </div>
 
         <div className="form-group">
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            className={errors.password && 'error'}
+          />
+          {errors.password && <p className="error-message">{errors.password}</p>}
+        </div>
+        {/* <div className="form-group">
           <label>Date of Birth:</label>
           <input
           type="date"
@@ -231,7 +233,7 @@ const validateForm = () => {
           />
           {errors['address.pincode'] && <p className="error-message">{errors['address.pincode']}</p>}
         </div>
-       
+        */}
         <div className="form-group">
           <button type="submit" className="submit-button">
             Register
