@@ -37,5 +37,11 @@ class AuthenticationService{
             console.error('Registration Error : ', error);
         }
     }
+    //Service method to fetch REST API of dealers list
+    static async getDealerInfo(){
+            return axios.get('http://localhost:8085/ims/api/dealers').then((response) => response.data).catch((error)=>{
+            console.log('Error fetching dealer info :', error);
+        });
+    }
 }
 export default AuthenticationService

@@ -21,6 +21,18 @@ const NavBar = () =>{
                 </li>
 
                 <li className="nav-item">
+                    <Link to ="/search" className = "nav-link">
+                    <span><FontAwesomeIcon icon = "search"></FontAwesomeIcon></span> &nbsp;    
+                    Search</Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link to ="/dealers" className = "nav-link">
+                    <span><FontAwesomeIcon icon = "people-group"></FontAwesomeIcon></span> &nbsp;    
+                    Dealers Info</Link>
+                </li>
+
+                <li className="nav-item">
                     <Link to ="/register" className = "nav-link">
                     <span><FontAwesomeIcon icon = "camera-retro"></FontAwesomeIcon></span> &nbsp;
                     Register</Link>

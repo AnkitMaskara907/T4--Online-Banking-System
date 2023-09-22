@@ -28,6 +28,17 @@ class ProductService{
     static deleteProduct(productId){
         return axios.delete(PRODUCT_REST_API_URL+'/'+productId);
     }
+
+    static async searchProductByName(name){
+        try{
+            const response = await axios.get(`${PRODUCT_REST_API_URL}/search?pname=${name}`)
+            return response.data;
+        }
+        catch(error)
+        {
+            console.error('Error searching for products: ', error)
+        }
+    }
 }
 
 

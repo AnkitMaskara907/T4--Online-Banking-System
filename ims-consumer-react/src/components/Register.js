@@ -121,123 +121,119 @@ const validateForm = () => {
 
 
   return (
-    <div><br/>
-      <div className='registration-container'>
-        <h2 style={{color:'brown'}}>Dealer Registration</h2>
-        {successMessage && <p className="success-message">{successMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={dealer.email}
-            onChange={handleChange}
-            className={errors.email && 'error'}
-          />
-          {errors.email && <p className="error-message">{errors.email}</p>}
-        </div>
-        <div className="form-group">
-          <label>First Name:</label>
-          <input
-            type="text"
-            name="fname"
-            value={dealer.fname}
-            onChange={handleChange}
-            className={errors.fname && 'error'}
-          />
-          {errors.fname && <p className="error-message">{errors.fname}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Last Name:</label>
-          <input
-            type="text"
-            name="lname"
-            value={dealer.lname}
-            onChange={handleChange}
-            className={errors.lname && 'error'}
-          />
-          {errors.lname && <p className="error-message">{errors.lname}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={dealer.password}
-            onChange={handleChange}
-            className={errors.password && 'error'}
-          />
-          {errors.password && <p className="error-message">{errors.password}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Date of Birth:</label>
-          <input
-          type="date"
-          name="dob"
-          value={dealer.dob}
-          onChange={handleChange}
-          className={errors.dob && 'error'}
-        />
-        {errors.dob && <p className="error-message">{errors.dob}</p>}
-      </div>
-
-      <div className="form-group">
-          <label>Phone Number:</label>
-          <input
-            type="text"
-            name="phoneNo"
-            value={dealer.phoneNo}
-            onChange={handleChange}
-            className={errors.phoneNo && 'error'}
-          />
-          {errors.phoneNo && <p className="error-message">{errors.phoneNo}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Street:</label>
-          <input
-            type="text"
-            name="address.street"
-            value={dealer.address.street}
-            onChange={handleChange}
-            className={errors['address.street'] && 'error'}
-          />
-          {errors['address.street'] && <p className="error-message">{errors['address.street']}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>City:</label>
-          <input
-            type="text"
-            name="address.city"
-            value={dealer.address.city}
-            onChange={handleChange}
-            className={errors['address.city'] && 'error'}
-          />
-          {errors['address.city'] && <p className="error-message">{errors['address.city']}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Pincode:</label>
-          <input
-            type="text"
-            name="address.pincode"
-            value={dealer.address.pincode}
-            onChange={handleChange}
-            className={errors['address.pincode'] && 'error'}
-          />
-          {errors['address.pincode'] && <p className="error-message">{errors['address.pincode']}</p>}
-        </div>
-       
-        <div className="form-group">
-          <button type="submit" className="submit-button">
-            Register
-          </button>
-        </div>
+     <div>
+      <br />
+      <div className="registration-container">
+        <form onSubmit={handleSubmit} className="form-grid">
+          <h2 style={{ color: 'brown', gridColumn: '1 / span 2' }}>Dealer Registration</h2>
+          <div className="column">
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={dealer.email}
+                onChange={handleChange}
+                className={errors.email && 'error'}
+              />
+              {errors.email && <p className="error-message">{errors.email}</p>}
+            </div>
+            <div className="form-group">
+              <label>First Name:</label>
+              <input
+                type="text"
+                name="fname"
+                value={dealer.fname}
+                onChange={handleChange}
+                className={errors.fname && 'error'}
+              />
+              {errors.fname && <p className="error-message">{errors.fname}</p>}
+            </div>
+            <div className="form-group">
+              <label>Last Name:</label>
+              <input
+                type="text"
+                name="lname"
+                value={dealer.lname}
+                onChange={handleChange}
+                className={errors.lname && 'error'}
+              />
+              {errors.lname && <p className="error-message">{errors.lname}</p>}
+            </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                value={dealer.password}
+                onChange={handleChange}
+                className={errors.password && 'error'}
+              />
+              {errors.password && <p className="error-message">{errors.password}</p>}
+            </div>
+         
+            <div className="form-group">
+              <label>Date of Birth:</label>
+              <input
+                type="date"
+                name="dob"
+                value={dealer.dob}
+                onChange={handleChange}
+                className={errors.dob && 'error'}
+              />
+              {errors.dob && <p className="error-message">{errors.dob}</p>}
+            </div>
+            </div>
+          <div className="column">
+            <div className="form-group">
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                name="phoneNo"
+                value={dealer.phoneNo}
+                onChange={handleChange}
+                className={errors.phoneNo && 'error'}
+              />
+              {errors.phoneNo && <p className="error-message">{errors.phoneNo}</p>}
+            </div>
+            <div className="form-group">
+              <label>Street:</label>
+              <input
+                type="text"
+                name="address.street"
+                value={dealer.address.street}
+                onChange={handleChange}
+                className={errors['address.street'] && 'error'}
+              />
+              {errors['address.street'] && <p className="error-message">{errors['address.street']}</p>}
+            </div>
+            <div className="form-group">
+              <label>City:</label>
+              <input
+                type="text"
+                name="address.city"
+                value={dealer.address.city}
+                onChange={handleChange}
+                className={errors['address.city'] && 'error'}
+              />
+              {errors['address.city'] && <p className="error-message">{errors['address.city']}</p>}
+            </div>
+            <div className="form-group">
+              <label>Pincode:</label>
+              <input
+                type="text"
+                name="address.pincode"
+                value={dealer.address.pincode}
+                onChange={handleChange}
+                className={errors['address.pincode'] && 'error'}
+              />
+              {errors['address.pincode'] && <p className="error-message">{errors['address.pincode']}</p>}
+            </div>
+          </div>
+          <div className="form-group" style={{ gridColumn: '1 / span 2' }}>
+            <button type="submit" className="submit-button">Register</button>
+            {successMessage && <p className="success-message">{successMessage}</p>}
+          </div>
         </form>
       </div>
     </div>

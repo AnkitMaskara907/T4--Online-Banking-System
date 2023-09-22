@@ -1,54 +1,67 @@
+/* Existing CSS */
+/* DealerRegistration.css */
 .registration-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .registration-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input[type="text"],
+  max-width: 800px; /* Adjust the max-width to your preference */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.column {
+  grid-column: span 1;
+  border: 0.5rem outset pink;
+ padding: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+input[type="text"],
   input[type="email"],
   input[type="password"],
   input[type="date"],
   input[type="tel"] {
     width: 100%;
-    padding: 8px;
+    max-width: 300px;
+    display: block;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 3px;
+    text-align: center;
+    margin: 0 auto;
   }
   
-  button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
+  .error {
+    border-color: red;
   }
   
   .error-message {
     color: red;
-    margin-top: 10px;
+    margin-top: 5px;
   }
   
+  .success-message {
+    color: green;
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width:200px;
+  }

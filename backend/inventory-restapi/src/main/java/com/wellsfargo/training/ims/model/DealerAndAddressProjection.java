@@ -15,7 +15,7 @@ public class DealerAndAddressProjection {
 	private Long id;
 	private String fname;
 	private String lname;
-	private String phone;
+	private String phoneNo;
 	private String email;
 	private String street;
 	private  String city;
