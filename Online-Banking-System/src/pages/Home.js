@@ -2,12 +2,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import React,{useLayoutEffect} from 'react';
 import {motion, useViewportScroll, useTransform} from 'framer-motion';
 
-import MyButton from "./MyButton";
+import MyButton from "../components/MyButton";
 import RegisterSVG from "../Abstracts/RegisterSVG";
 import "../styles/RegisterSVG.css";
 import "../styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 import { Parallax } from 'react-scroll-parallax';
 
 const low={

@@ -1,16 +1,39 @@
 // import logo from './logo.svg';
-import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 // import NavBar from './components/NavBar';
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee} from '@fortawesome/free-solid-svg-icons';
-import Register from './components/Register';
-import Login from './components/Login';
-import About from './components/about';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faSignIn,
+  faCameraRetro,
+  faCoffee,
+  faBomb,
+  faEdit,
+  faTrash,
+  faList,
+  faPeopleGroup,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
+import About from "./pages/about";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 // import Product from './components/Product';
-import Home from './components/Home';
 import Sidebar from "./components/Sidebar";
-library.add(faSignIn, faCameraRetro, faCoffee);
+import Home from "./pages/Home";
+
+import ViewUser from "./components/ViewUser";
+import Admin from "./pages/Admin";
+library.add(
+  faSignIn,
+  faCameraRetro,
+  faCoffee,
+  faBomb,
+  faEdit,
+  faTrash,
+  faList,
+  faPeopleGroup,
+  faSearch
+);
 
 /*
 	React Router is a standard library for routing in React. 
@@ -38,26 +61,33 @@ function App() {
       </header> */}
 
       <section>
-        <div style = {{
-          backgroundColor: '#97144d',
-          backgroundSize:'cover',
-          minHeight:'140vh',
-          minWidth:'100vw', margin: '0', padding:'1px'
-        }}>
+        <div
+          style={{
+            backgroundColor: "#97144d",
+            backgroundSize: "cover",
+            minHeight: "140vh",
+            minWidth: "100vw",
+            margin: "0",
+            padding: "1px",
+          }}
+        >
           <Router>
             {/* <NavBar></NavBar>   */}
             <Routes>
-              <Route path='/home' element ={<Home/>}></Route>
-              <Route path='/register' element = {<Register/>}></Route>
-              <Route path='/login' element = {<Login/>}></Route>
-              <Route path='/about' element = {<About/>}></Route>
-              <Route path="/dashboard/:id" element={<Sidebar/>}/>
-            </Routes>  
+              <Route path="/home" element={<Home />}></Route>
+              <Route path="/register" element={<Register />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="/dashboard/:id" element={<Sidebar />} />
+
+              <Route path="/admin" element={<Admin />}></Route>
+              <Route path="/viewUser/:id" element={<ViewUser />}></Route>
+            </Routes>
           </Router>
         </div>
       </section>
 
-      <footer className = "footer">
+      <footer className="footer">
         <p>&copy; All rights reserved to Wells Fargo</p>
       </footer>
     </div>
