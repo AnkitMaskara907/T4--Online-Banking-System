@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faSignIn, faCameraRetro, faCoffee} from '@fortawesome/free-solid-svg-icons';
 import Register from './components/Register';
 import Login from './components/Login';
 import About from './components/about';
-import Product from './components/Product';
+// import Product from './components/Product';
 import Home from './components/Home';
 import Sidebar from "./components/Sidebar";
 library.add(faSignIn, faCameraRetro, faCoffee);
@@ -47,11 +47,11 @@ function App() {
           <Router>
             {/* <NavBar></NavBar>   */}
             <Routes>
-              <Route path='/' element ={<Home/>}></Route>
+              <Route path='/home' element ={<Home/>}></Route>
               <Route path='/register' element = {<Register/>}></Route>
               <Route path='/login' element = {<Login/>}></Route>
               <Route path='/about' element = {<About/>}></Route>
-              <Route path="/sideBar" element={<Sidebar/>}/>
+              <Route path="/dashboard/:id" element={<Sidebar/>}/>
             </Routes>  
           </Router>
         </div>

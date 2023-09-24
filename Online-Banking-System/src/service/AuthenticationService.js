@@ -17,9 +17,9 @@ Once the request is made we get the data in Return, and then we use this data in
 class AuthenticationService{
 
     //service method for performing a login
-    static async login(dealer){
+    static async login(user){
         try{
-            const response = await axios.post('http://localhost:8085/obs/api/loginUser', dealer);
+            const response = await axios.post('http://localhost:8085/obs/api/loginUser', user);
             return response.data;
         }
         catch(error){

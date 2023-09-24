@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 // import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from "react-icons/ai";
 // import * as IoIcons from "react-icons/io";
@@ -7,7 +7,7 @@ import React from "react";
 export const SidebarData = [
 {
 	title: "Account Details",
-	path: "/about-us",
+	path: "/accountDetails",
 	// icon: <AiIcons.AiFillHome />,
 	// iconClosed: <RiIcons.RiArrowDownSFill />,
 	// iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -27,7 +27,7 @@ export const SidebarData = [
 },
 {
 	title: "Account Summary",
-	path: "/services",
+	path: "/accountSummary",
 	// icon: <IoIcons.IoIosPaper />,
 	// iconClosed: <RiIcons.RiArrowDownSFill />,
 	// iconOpened: <RiIcons.RiArrowUpSFill />,

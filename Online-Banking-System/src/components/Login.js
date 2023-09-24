@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../styles/Login.css'
 import AuthenticationService from '../service/AuthenticationService'
+import UserService from '../service/UserService'
 import NavBar from './NavBar';
 
 const Login = () => {
@@ -25,9 +26,11 @@ const Login = () => {
             console.log('API response: ', loginSuccess);
             if(loginSuccess)
             {
+                const response = await UserService.getUserByEmail(email);
+                const user_id = response.data;
                 setSuccessMessage('Login Successful, Redirecting....');
                 setTimeout(() => {
-                    history('/sideBar');
+                    history(`/dashboard/${user_id}`);
                 }, 3000);
             }
             else{
