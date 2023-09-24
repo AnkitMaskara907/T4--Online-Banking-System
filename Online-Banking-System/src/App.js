@@ -39,7 +39,7 @@ function App() {
 
       <section>
         <div style = {{
-          backgroundColor: '#97144d',
+          backgroundColor: '#b6c199',
           backgroundSize:'cover',
           minHeight:'140vh',
           minWidth:'100vw', margin: '0', padding:'1px'

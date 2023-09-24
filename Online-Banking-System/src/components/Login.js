@@ -19,6 +19,13 @@ const Login = () => {
             setErrorMessage('Please enter both email or password');
             return;
         }
+        if (email == "admin@gmail.com" && password == "123456"){
+            setSuccessMessage('Login Successful. Redirecting to admin page...');
+            setTimeout(() => {
+            history('/admin'); // Redirect to the admin page
+            }, 3000);
+        }
+        else{
         const dealer = {email, password};
 
         try{
@@ -42,11 +49,12 @@ const Login = () => {
             setErrorMessage('An error occured during login');
         }
     }
+};
 //C:\ReactProjects\Team project\T4--Online-Banking-System\Online-Banking-System\src\components\Login.js
   return (
     <div><NavBar></NavBar> <br/><br/>
         <div className ='login-container'>
-            <h2 style = {{color: 'green'}}>Dealer Login</h2>
+            <h2 style = {{color: 'green'}}>User Login</h2>
             <div className ='form-group'>
                 <label>Email: </label>
                 <input type='email' className='form-control' value={email} onChange={(e)=>setEmail(e.target.value)}/>
