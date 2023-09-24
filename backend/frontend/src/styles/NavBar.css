@@ -1,0 +1,66 @@
+/* NavBar.css */
+/* Common styles for all screen sizes*/
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  /* justify-content: center; */
+}
+
+
+.Home-logo{
+  justify-content:left;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 15px 20px;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 767px) {
+/* Styles for mobile devices */
+.nav-item {
+  margin-right: 10px;
+}
+
+.menu-icon {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.nav-link {
+  padding: 10px;
+}
+} 
+
+
