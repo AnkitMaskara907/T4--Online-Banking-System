@@ -34,7 +34,14 @@ public class UserService {
 		return urepo.findAll();
 	}
 
+	public Optional<User> getSingleUser(Long id){
+		return urepo.findById(id);
+	}
 	public Optional<User> loginUser(String email) {
 		return urepo.findByEmail(email);
 	}
+	public int getIdByEmail(String email) {
+		return urepo.findIdByEmail(email);
+	}
+
 }
