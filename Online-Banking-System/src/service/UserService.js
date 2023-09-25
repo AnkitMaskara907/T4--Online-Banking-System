@@ -20,6 +20,15 @@ class UserService {
     }
   }
 
+  static getUserById1(id){
+    try{
+        return axios.get('http://localhost:8085/obs/api/users' + '/' + id);
+    }
+    catch(error){
+        console.error('Login error: ', error);
+    }
+  }
+
   static updateUser(user, userId) {
     return axios.put(USER_REST_API_URL + "/" + user, userId);
   }

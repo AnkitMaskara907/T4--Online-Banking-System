@@ -14,15 +14,15 @@ import {
   faPeopleGroup,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import About from "./pages/about";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import About from "./components/about";
+import Login from "./components/Login";
+import Register from "./components/Register";
 // import Product from './components/Product';
 import Sidebar from "./components/Sidebar";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 
 import ViewUser from "./components/ViewUser";
-import Admin from "./pages/Admin";
+import Admin from "./components/Admin";
 library.add(
   faSignIn,
   faCameraRetro,

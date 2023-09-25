@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import styled from "styled-components";
 import { Link , useParams} from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
@@ -6,6 +6,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
+import UserService from '../service/UserService'
 
 const Nav = styled.div`
 background: #15171c;
@@ -46,6 +47,17 @@ const [sidebar, setSidebar] = useState(false);
 
 const showSidebar = () => setSidebar(!sidebar);
 const { id } = useParams();
+const [user_name, setUserName] = useState('');
+useEffect(() => {
+    // Fetch user details based on the ID
+    UserService.getUserById1(id)
+      .then(response => {
+        setUserName(response.data.user_name);
+      })
+      .catch(error => {
+        console.error('Error fetching user:', error);
+      });
+  }, [id]);
 return (
 	<>
 	<IconContext.Provider value={{ color: "#fff" }}>
@@ -56,7 +68,7 @@ return (
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <h1 style={{color:"white"}}> Wells Online Banking </h1>
 		</Nav>
-		<h1>Hi, {id}</h1>
+		<h1>Hi, {user_name}</h1>
 		<SidebarNav sidebar={sidebar}>
 		<SidebarWrap>
 			<NavIcon to="#">
