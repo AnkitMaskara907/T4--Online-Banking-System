@@ -1,5 +1,7 @@
 package com.wellsfargo.training.obs.model;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.SequenceGenerator;
 //Model class for managing users
 
 @Entity
+@CrossOrigin(origins="*")
 public class User {
 	@SequenceGenerator(name="user_seq", initialValue = 1000, allocationSize = 1)
 	@Id

@@ -29,7 +29,7 @@ class AuthenticationService{
 
     static async registeruser(user){
         try{
-            const response = await axios.post('http://localhost:8085/obs/api/users', user);
+            const response = await axios.post('http://localhost:8085/obs/api/register-user', user);
             return response.data;
         }
         catch(error){
