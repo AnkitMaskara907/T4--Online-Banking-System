@@ -13,7 +13,7 @@ import Sidebar from "./components/Sidebar";
 import AccountDetails from './components/AccountDetails';
 import Transaction from './components/Transaction';
 
-import AccountSumamry from './components/AccountSummary';
+import AccountSummary from './components/AccountSummary';
 import ChangePassword from './components/ChangePassword';
 import OpenNewAccount from './components/OpenNewAccount';
 library.add(faSignIn, faCameraRetro, faCoffee);
@@ -53,13 +53,13 @@ function App() {
           <Router>
             {/* <NavBar></NavBar>   */}
             <Routes>
-              <Route path='/home' element ={<Home/>}></Route>
+              <Route path='/' element ={<Home/>}></Route>
               <Route path='/register' element = {<Register/>}></Route>
               <Route path='/login' element = {<Login/>}></Route>
               <Route path='/about' element = {<About/>}></Route>
               <Route path="/dashboard/:id" element={<Sidebar/>}/>
               <Route path="/accountDetails/:id" element={<AccountDetails/>}/>
-              <Route path="/accountSummary/:id" element={<AccountSumamry/>}/>
+              <Route path="/accountSummary/:id" element={<AccountSummary/>}/>
               <Route path="/transaction/:id" element={<Transaction/>}/>
               <Route path="/openNewAccount/:id" element={<OpenNewAccount/>}/>
               <Route path="/changePassword/:id" element={<ChangePassword/>}/>

@@ -110,7 +110,7 @@ function MyNavbar({label}) {
     <Navbar id='navbar' className="Navbar" fixed="top" expand="lg">
       <Container style={{maxWidth:'90%',color:'antiquewhite'}} >
         <Navbar.Brand className="NavbarBrand" onClick={()=>{ navigate("/");setActive("home")}}>
-          Axis Bank
+          Voyager Bank
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
