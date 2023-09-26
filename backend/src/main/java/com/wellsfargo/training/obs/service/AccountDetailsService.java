@@ -26,7 +26,7 @@ public class AccountDetailsService {
 		public void deleteUser(long id) {
 			adRepo.deleteById(id);
 		}
-		public List<AccountDetails> searchProductsByName(String name){
+		public List<AccountDetails> searchUsersByName(String name){
 			return adRepo.findUsersByNameContainingIgnoreCase(name);
 		}
 		public Optional<AccountDetails> approveUser(String email) {

@@ -19,7 +19,7 @@ const Login = () => {
             setErrorMessage('Please enter both email or password');
             return;
         }
-        if (email == "admin@gmail.com" && password == "123456"){
+        if (email === "admin@gmail.com" && password === "123456"){
             setSuccessMessage('Login Successful. Redirecting to admin page...');
             setTimeout(() => {
             history('/admin'); // Redirect to the admin page

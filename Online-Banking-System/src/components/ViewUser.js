@@ -72,7 +72,7 @@ const ViewUser = () => {
           </div>
           <div className="row">
             <label>Status:</label>
-            <div className="text-success fw-bolder">{user.status}</div>
+            <div className="text-success fw-bolder">{(user.status).toString()}</div>
             <hr />
           </div>
         </div>

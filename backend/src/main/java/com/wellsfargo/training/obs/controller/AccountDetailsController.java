@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.obs.exception.ResourceNotFoundException;
@@ -36,14 +37,14 @@ public class AccountDetailsController {
 	}
 	
 	@PostMapping("/accountDetails")
-	public AccountDetails saveDetails(@Validated @RequestBody AccountDetails details) {
+	public ResponseEntity<AccountDetails> saveDetails(@Validated @RequestBody AccountDetails details) {
 		try {
 			AccountDetails ad=adService.getDetails(details);
-			return ad;
+			return ResponseEntity.status(HttpStatus.CREATED).body(ad);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
 	
@@ -63,13 +64,28 @@ public class AccountDetailsController {
 		
 		
 		@GetMapping("/accountDetails/{id}")
-		public ResponseEntity<AccountDetails> getProductById(@PathVariable(value = "id") Long uid) throws ResourceNotFoundException{
+		public ResponseEntity<AccountDetails> getUserById(@PathVariable(value = "id") Long uid) throws ResourceNotFoundException{
 			AccountDetails p = adService.getSingleUser(uid).orElseThrow(()-> new
 					ResourceNotFoundException("User Not Found for this ID: "+uid));
 			return ResponseEntity.ok().body(p);
 		}
 
-		
+		@GetMapping("/accountDetails/search")
+		public ResponseEntity<?> searchUsersByName(@RequestParam("name") String name){
+			try {
+				List<AccountDetails> users=adService.searchUsersByName(name);
+				
+				if(users.isEmpty()) {
+					return new ResponseEntity<>("No Users Found with given Name.",
+							HttpStatus.NOT_FOUND);
+				}
+				return new ResponseEntity<>(users,HttpStatus.OK);
+			} catch(Exception e) {
+				e.printStackTrace();
+				
+				return new ResponseEntity<>("Database Error",HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}
 		
 		@DeleteMapping("/accountDetails/{uid}")
 		public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable(value = "uid") Long uid) throws ResourceNotFoundException{
@@ -92,17 +108,4 @@ public class AccountDetailsController {
 			final AccountDetails approvedUser = adService.getDetails(user);
 			return ResponseEntity.ok().body(approvedUser);
 		}
-		
-//		public Boolean loginUser(@Validated @RequestBody AccountDetails user) throws ResourceNotFoundException {
-//			String email =user.getEmail();
-//			Boolean status =user.getStatus();
-//			
-//			AccountDetails u=adService.approveUser(email).orElseThrow(() ->
-//			new ResourceNotFoundException("User Not Found for this ID ::"));
-//			
-//			if(email.equals(u.getEmail())) {
-//				user.setStatus(!status);
-//			}
-//			return status;
-//			}
 }

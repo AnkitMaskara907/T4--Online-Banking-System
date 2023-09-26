@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../service/UserService";
+import UserSearch from "./UserSearch";
 
 const Admin = () => {
   const history = useNavigate();
@@ -64,6 +65,8 @@ const Admin = () => {
       <div className="container"></div>
       <h1 className="text-warning">User List</h1>
       <br />
+      <UserSearch/>
+      <br />
       {/* <div className="row justify-content-center">
         <button className="btn-btn-info w-auto" onClick={addProduct}>
           Add Product
@@ -83,6 +86,7 @@ const Admin = () => {
               <th> Aadhar</th>
               <th> PAN</th>
               <th> Status</th>
+              <th> Actions</th>
             </tr>
           </thead>
           <tbody>
