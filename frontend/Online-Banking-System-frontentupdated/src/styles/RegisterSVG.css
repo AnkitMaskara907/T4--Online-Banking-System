@@ -1,0 +1,27 @@
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    align-items: center;
+    display:inline-flex;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .svg-container:hover {
+    /* width: 120px;
+    height: 120px; */
+    background-color: orange;
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  .svg-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #000;
+  }
+  
