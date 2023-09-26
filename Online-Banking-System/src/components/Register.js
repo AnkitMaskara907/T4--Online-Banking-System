@@ -31,7 +31,8 @@ const handleChange = (e) => {
         [child]: value
       }
     }));
-  } else {
+  } 
+  else {
     setUser((prevUser) => ({
       ...prevUser,
       [name]: value
@@ -64,7 +65,7 @@ const handleSubmit = async (e) => {
 const validateForm = () => {
   let validationErrors = {};
   if (!user.user_name) {
-    validationErrors.email = 'User name is required!';
+    validationErrors.user_name = 'User name is required!';
   }
   if (!user.email) {
     validationErrors.email = 'Email is required!';
@@ -125,7 +126,7 @@ const validateForm = () => {
           <label>Confirm Password:</label>
           <input
             type="password"
-            name="password"
+            name="confirm-password"
             value={user.password}
             onChange={handleChange}
             className={errors.password && 'error'}

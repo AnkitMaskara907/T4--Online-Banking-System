@@ -13,6 +13,9 @@ import java.util.Optional;
  */
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import com.wellsfargo.training.obs.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
@@ -23,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 		       This interface will be implemented by class automatically
 		    */
 	public Optional<User> findByEmail(String email);
+	
+	@Query("SELECT p.user_id FROM User p WHERE LOWER(p.email) LIKE LOWER(:email)")
+	int findIdByEmail(@Param("email")String email);
 }

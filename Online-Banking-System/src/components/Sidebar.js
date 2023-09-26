@@ -66,17 +66,33 @@ return (
 			<FaIcons.FaBars onClick={showSidebar} />
 		</NavIcon>&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <h1 style={{color:"white"}}> Wells Online Banking </h1>
+        <h1 style={{color:"white"}}> Hi, {user_name} </h1>
 		</Nav>
-		<h1>Hi, {user_name}</h1>
+
 		<SidebarNav sidebar={sidebar}>
 		<SidebarWrap>
 			<NavIcon to="#">
 			<AiIcons.AiOutlineClose onClick={showSidebar} />
 			</NavIcon>
 			{SidebarData.map((item, index) => {
-			return <SubMenu item={item} key={index} />;
-			})}
+  const linkTo = item.path.replace(':id', id); // Replace :id with the actual id
+
+  return (
+    <SubMenu
+      item={{ ...item, path: linkTo }}
+      key={index}
+    />
+  );
+})}
+					{/* {SidebarData.map((item, index) => {
+//  const linkTo = item.path.includes(':id') ? `/transaction/${id}` : item.path;
+  return (
+    <SubMenu
+      item={{ ...item, path: linkTo }}
+      key={index}
+    />
+  );
+})} */}
 		</SidebarWrap>
 		</SidebarNav>
 	</IconContext.Provider>
