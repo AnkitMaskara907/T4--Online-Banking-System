@@ -25,7 +25,7 @@ import com.wellsfargo.training.ims.service.DealerService;
 @RestController
 @RequestMapping(value="/api")
 public class DealerController {
-	@Autowired
+	@Autowired //used for dependency injection
 	private DealerService dservice;
 	
 	/* ResponseEntity represents an HTTP response, including headers, body, and status. */
@@ -57,7 +57,7 @@ public class DealerController {
 		// http://localhost:8085/ims/api/loginDealer
 	
 	@PostMapping("/loginDealer")
-	public Boolean loginDealer(@Validated @RequestBody Dealer dealer) throws ResourceNotFoundException {
+	public ResponseEntity<Boolean> loginDealer(@Validated @RequestBody Dealer dealer) throws ResourceNotFoundException {
 		Boolean isLoggedIn=false;
 		String email=dealer.getEmail();
 		String password=dealer.getPassword();
@@ -68,7 +68,7 @@ public class DealerController {
 		if(email.equals(d.getEmail()) && password.equals(d.getPassword())) {
 			isLoggedIn=true;
 		}
-		return isLoggedIn;
+		return ResponseEntity.ok(isLoggedIn);
 		}
 	//Open postman and make a get request http://localhost:8085/ims/api/dealers
 	@GetMapping("/dealers")

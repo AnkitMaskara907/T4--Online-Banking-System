@@ -25,6 +25,7 @@ const Login = () => {
             if(loginSuccess)
             {
                 setSuccessMessage('Login Successful, Redirecting....');
+                AuthenticationService.registerSuccessfullLogin(email);
                 setTimeout(() => {
                     history('/product');
                 }, 3000);

@@ -14,6 +14,8 @@ Once the request is made we get the data in Return, and then we use this data in
 */
 
 //Service Class interacts with REST API - Spring Boot
+
+export const USER_NAME_SESSION_ATTRIBUTE_NAME = "authenicatedUser";
 class AuthenticationService{
 
     //service method for performing a login
@@ -43,5 +45,28 @@ class AuthenticationService{
             console.log('Error fetching dealer info :', error);
         });
     }
+
+    //Session Storage is used to store data in browser memory in key/value pairs
+    static registerSuccessfullLogin(userName){
+        sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, userName);
+        console.log(userName);
+    }
+
+    static isUserLoggedIn(){
+        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        if(user === null) return false;
+            return true;
+    }
+
+    static getLoggedInUserName(){
+        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        if(user === null) return '';
+            return user;
+    }
+
+    static logout(){
+        sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+    }
+
 }
 export default AuthenticationService

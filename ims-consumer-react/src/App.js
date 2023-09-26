@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch, faSignOut} from '@fortawesome/free-solid-svg-icons';
 import Register from './components/Register';
 import Login from './components/Login';
 import About from './components/about';
@@ -12,7 +12,8 @@ import Product from './components/Product';
 import CreateProduct from './components/CreateProduct';
 import ViewProduct from './components/ViewProduct';
 import DealerInfo from './components/DealerInfo';
-library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch);
+import Logout from './components/Logout';
+library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch, faSignOut);
 
 /*
 	React Router is a standard library for routing in React. 
@@ -56,6 +57,7 @@ function App() {
               <Route path='/product' element = {<Product/>}></Route>
               <Route path='/dealers' element = {<DealerInfo/>}></Route>
               <Route path='/search' element = {<ProductSearch/>}></Route>
+              <Route path='/logout' element = {<Logout/>}></Route>
 
               <Route path='/addProduct/:id' element = {<CreateProduct/>}></Route>
               <Route path='/viewProduct/:id' element = {<ViewProduct/>}></Route>
