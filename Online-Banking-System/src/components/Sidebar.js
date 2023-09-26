@@ -53,7 +53,7 @@ useEffect(() => {
     // Fetch user details based on the ID
     UserService.getUserById(id)
       .then(response => {
-        setUserDetails(response.data.user_name);
+        setUserDetails(response.data);
       })
       .catch(error => {
         console.error('Error fetching user:', error);
@@ -67,7 +67,7 @@ return (
 			<FaIcons.FaBars onClick={showSidebar} />
 		</NavIcon>&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <h1 style={{color:"white"}}> Hi, {user_name} </h1>
+        <h1 style={{color:"white"}}> Hi, {userDetails.user_name} </h1>
 		</Nav>
 		<h1>Hi, {userDetails.user_name}</h1>
 		<SidebarNav sidebar={sidebar}>

@@ -14,7 +14,6 @@ import Home from './components/Home';
 import Sidebar from "./components/Sidebar";
 import Transaction from './components/Transactions';
 import AccountDetails from './components/AccountDetails';
-import Transaction from './components/Transaction';
 
 import AccountSummary from './components/AccountSummary';
 import ChangePassword from './components/ChangePassword';
@@ -48,7 +47,7 @@ function App() {
 
       <section>
         <div style = {{
-          backgroundColor: '#b6c199',
+          backgroundColor: '#97144d',
           backgroundSize:'cover',
           minHeight:'140vh',
           minWidth:'100vw', margin: '0', padding:'1px'
@@ -58,6 +57,7 @@ function App() {
             {/* <NavBar></NavBar>   */}
             <Routes>
               <Route path='/' element ={<Home/>}></Route>
+              <Route path='/home' element ={<Home/>}></Route>
               <Route path='/register' element = {<Register/>}></Route>
               <Route path='/login' element = {<Login/>}></Route>
               <Route path='/about' element = {<About/>}></Route>
