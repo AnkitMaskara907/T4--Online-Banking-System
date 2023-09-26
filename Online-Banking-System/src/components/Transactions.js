@@ -7,29 +7,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Transactions.css";
 import AuthenticationService from '../service/AuthenticationService';
 import { useParams } from "react-router-dom";
-import { useIdContext } from "../Context/IdContext";
+// import { useIdContext } from "../Context/IdContext";
+import UserService from '../service/UserService';
+
+
 
 const Transaction = () => {
 
 
 const history = useNavigate();
-const {id}=useParams();
-const {accountId, setAccountId} = useIdContext();
-// const redirectToLink = () => {
-//     const targetUrl = 'http://localhost:3000/';
-//     window.location.href = targetUrl;
-//   };
-useEffect(()=>{
-    setAccountId(id);
-},[id,accountId,setAccountId])
 const [account, setAccount] = useState({
-    fromAc:id,
+    fromAc:'',
     toAc: '',
     date:'2023-09-26',
     amount: 0,
     transactionTypeId:'',
     remarks: '',
   });
+const {id} = useParams();
+const [accountId, setAccountId] = useState('');
 const [errors, setErrors] = useState({});
 const [successMessage, setSuccessMessage] = useState('');
 
@@ -58,11 +54,13 @@ const validationErrors = validateForm();
 if (Object.keys(validationErrors).length === 0) {
     try {
         console.log("Account Id:",account.fromAc);
+    console.log(account);
     await AuthenticationService.executeTransaction(account);
     setSuccessMessage('Transaction successful!');
     alert("Your Transaction is Successful !");
+    console.log(accountId);
     setTimeout(() => {
-        history('/allTransactions/'+id); // navigates to Login Component
+        history('/allTransactions/'+accountId); // navigates to Login Component
     }, 3000);
     
     } 
@@ -88,6 +86,25 @@ const validateForm = () => {
     } 
     return validationErrors;
   };
+  useEffect(() => {
+    
+    const fetchAccountId = async () => {
+        try {
+          const response = await UserService.getAccountByEmail((await UserService.getUserById(id)).data.email);
+          console.log("Account=",response);
+          const fetchedAccountId = response.data.uid;
+          setAccountId(fetchedAccountId);
+          setAccount((prevAccount) => ({
+            ...prevAccount,
+            fromAc: fetchedAccountId,
+          }));
+        } catch (error) {
+          console.error('Error fetching accountId', error);
+        }
+      };
+
+    fetchAccountId();
+  }, [id]);
 
   useLayoutEffect(()=>{
     window.scrollTo({

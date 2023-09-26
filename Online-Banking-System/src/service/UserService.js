@@ -18,6 +18,14 @@ class UserService{
         console.error('Login error: ', error);
     }
   }
+  static getAccountByEmail(email){
+    try{
+        return axios.get('http://localhost:8085/obs/api/AccountDetails/'+email);
+    }
+    catch(error){
+      console.error('Error Getting Account:', error);
+    }
+  }
 }
 
 export default UserService

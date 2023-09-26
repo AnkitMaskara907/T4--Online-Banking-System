@@ -3,13 +3,16 @@ package com.wellsfargo.training.obs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wellsfargo.training.obs.exception.ResourceNotFoundException;
 import com.wellsfargo.training.obs.model.AccountDetails;
 import com.wellsfargo.training.obs.model.User;
 import com.wellsfargo.training.obs.service.AccountDetailsService;
@@ -44,6 +47,11 @@ public class AccountDetailsController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	@GetMapping("/AccountDetails/{email}")
+	public ResponseEntity<AccountDetails> getAccountByEmail(@PathVariable(value="email") String email){
+		AccountDetails account=(adService.loginAccount(email)).orElse(new AccountDetails());
+		return ResponseEntity.ok().body(account);
 	}
 
 

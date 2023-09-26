@@ -1,6 +1,7 @@
 package com.wellsfargo.training.obs.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class AccountDetailsService {
 	  
 	  public List<AccountDetails> listAll() {
 			return adRepo.findAll();
+		}
+	  public Optional<AccountDetails> loginAccount(String email) {
+			return adRepo.findByEmail(email);
 		}
 
 }
