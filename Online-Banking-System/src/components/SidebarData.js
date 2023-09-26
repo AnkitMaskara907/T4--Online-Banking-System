@@ -59,7 +59,7 @@ export const SidebarData = [
 },
 {
 	title: "Open New Account",
-	path: "/events",
+	path: "/dashboard/addAccount/:id",
 	// icon: <FaIcons.FaEnvelopeOpenText />,
 
 	// iconClosed: <RiIcons.RiArrowDownSFill />,

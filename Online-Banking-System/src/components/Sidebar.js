@@ -75,8 +75,16 @@ return (
 			<AiIcons.AiOutlineClose onClick={showSidebar} />
 			</NavIcon>
 			{SidebarData.map((item, index) => {
-			return <SubMenu item={item} key={index} />;
-			})}
+  const linkTo = item.path.replace(':id', id); // Replace :id with the actual id
+
+  return (
+    <SubMenu
+      item={{ ...item, path: linkTo }}
+      key={index}
+    />
+  );
+})}
+
 		</SidebarWrap>
 		</SidebarNav>
 	</IconContext.Provider>

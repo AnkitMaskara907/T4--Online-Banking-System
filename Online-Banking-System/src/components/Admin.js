@@ -22,6 +22,13 @@ const Admin = () => {
     });
   };
 
+  // const addUser=()=>{
+  //   history('/addUser/_add');
+  // }
+  // const editUser=(id)=>{
+  //   history(`/addUser/${id}`);
+  // }
+
   const viewUser = (id) => {
     history(`/viewUser/${id}`); //use back quote operator to evaluate the jsx expression
   };
@@ -64,11 +71,11 @@ const Admin = () => {
       <div className="container"></div>
       <h1 className="text-warning">User List</h1>
       <br />
-      {/* <div className="row justify-content-center">
-        <button className="btn-btn-info w-auto" onClick={addProduct}>
-          Add Product
+       {/* <div className="row justify-content-center">
+        <button className="btn-btn-info w-auto" onClick={addUser}>
+          Add User
         </button>
-      </div> */}
+      </div>  */}
       <br />
       <div className="row justify-content-center">
         <table className="table table-success w-50">
@@ -106,10 +113,10 @@ const Admin = () => {
                     }}
                     style={{
                       backgroundColor:
-                        user.status === false ? "tomato" : "lightgreen",
+                        user.status === true ? "tomato" : "lightgreen",
                     }}
                   >
-                    {user.status === false ? "De-activate" : "Activate"}
+                    {user.status === true ? "De-activate" : "Activate"}
                   </button>{" "}
                 </td>
                 <td>

@@ -23,6 +23,7 @@ import Home from "./components/Home";
 
 import ViewUser from "./components/ViewUser";
 import Admin from "./components/Admin";
+import CreateAccount from "./components/CreateAccount";
 library.add(
   faSignIn,
   faCameraRetro,
@@ -82,6 +83,8 @@ function App() {
 
               <Route path="/admin" element={<Admin />}></Route>
               <Route path="/viewUser/:id" element={<ViewUser />}></Route>
+
+              <Route path='dashboard/addAccount/:id' element={<CreateAccount/>}></Route>
             </Routes>
           </Router>
         </div>
