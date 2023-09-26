@@ -10,14 +10,14 @@ class UserService{
         console.error('Login error: ', error);
     }
   }
-  static getUserById(id){
-    try{
-        return axios.get('http://localhost:8085/obs/api/users' + '/' + id);
-    }
-    catch(error){
-        console.error('Login error: ', error);
-    }
-  }
+  // static getUserById(id){
+  //   try{
+  //       return axios.get('http://localhost:8085/obs/api/users' + '/' + id);
+  //   }
+  //   catch(error){
+  //       console.error('Login error: ', error);
+  //   }
+  // }
 }
 
 export default UserService

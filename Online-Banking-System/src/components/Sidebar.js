@@ -47,12 +47,13 @@ const [sidebar, setSidebar] = useState(false);
 
 const showSidebar = () => setSidebar(!sidebar);
 const { id } = useParams();
+const [userDetails,setUserDetails]=useState({user_id:"",user_name:"",email:""});
 const [user_name, setUserName] = useState('');
 useEffect(() => {
     // Fetch user details based on the ID
     UserService.getUserById(id)
       .then(response => {
-        setUserName(response.data.user_name);
+        setUserDetails(response.data.user_name);
       })
       .catch(error => {
         console.error('Error fetching user:', error);
@@ -68,7 +69,7 @@ return (
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <h1 style={{color:"white"}}> Hi, {user_name} </h1>
 		</Nav>
-
+		<h1>Hi, {userDetails.user_name}</h1>
 		<SidebarNav sidebar={sidebar}>
 		<SidebarWrap>
 			<NavIcon to="#">

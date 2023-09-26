@@ -36,5 +36,33 @@ class AuthenticationService{
             console.error('Registration Error : ', error);
         }
     }
+    static async executeTransaction(transactionObj){
+        try{
+            const response = await axios.post('http://localhost:8085/obs/transaction/fundTransfer', transactionObj);
+            return response.data;
+        }
+        catch(error){
+            console.error('Transaction Error',error);
+        }
+    }
+    static async lastTenTransactions(accountId){
+        try{
+            const response = await axios.get('http://localhost:8085/obs/transaction/'+accountId+'getRecentTransactions');
+            return response.data;
+        }
+        catch(error){
+            console.error('Last Transactions Error', error);
+        }
+    }
+    static async allTransactions(accountId){
+        try{
+            const response = await axios.get('http://localhost:8085/obs/transaction/'+accountId+'getAllTransactions');
+            return response.data;
+        }
+        catch(error){
+            console.error('All Transactions Error', error);
+        }
+    }
+
 }
 export default AuthenticationService

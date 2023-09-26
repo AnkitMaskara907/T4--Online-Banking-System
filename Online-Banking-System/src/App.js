@@ -7,9 +7,12 @@ import {faSignIn, faCameraRetro, faCoffee} from '@fortawesome/free-solid-svg-ico
 import Register from './components/Register';
 import Login from './components/Login';
 import About from './components/about';
+import AllTransactions from './components/AllTransactions';
+import { IdProvider } from './Context/IdContext';
 // import Product from './components/Product';
 import Home from './components/Home';
 import Sidebar from "./components/Sidebar";
+import Transaction from './components/Transactions';
 import AccountDetails from './components/AccountDetails';
 import Transaction from './components/Transaction';
 
@@ -50,6 +53,7 @@ function App() {
           minHeight:'140vh',
           minWidth:'100vw', margin: '0', padding:'1px'
         }}>
+          <IdProvider>
           <Router>
             {/* <NavBar></NavBar>   */}
             <Routes>
@@ -65,6 +69,7 @@ function App() {
               <Route path="/changePassword/:id" element={<ChangePassword/>}/>
             </Routes>  
           </Router>
+          </IdProvider>
         </div>
       </section>
 

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../styles/Login.css'
 import AuthenticationService from '../service/AuthenticationService'
 import UserService from '../service/UserService'
 import NavBar from './NavBar';
+import { useIdContext } from '../Context/IdContext';
 
 const Login = () => {
     //defining state for email and password
@@ -13,7 +14,8 @@ const Login = () => {
     const[password, setPassword] = useState('');
     const[errorMessage, setErrorMessage] = useState('');
     const[successMessage, setSuccessMessage] = useState('');
-
+    const { setAccountId}=useIdContext(); 
+    let Tempid='';
     const handleLogin = async () =>{
         if( !email || !password ){
             setErrorMessage('Please enter both email or password');
@@ -32,12 +34,14 @@ const Login = () => {
             const loginSuccess = await AuthenticationService.login(dealer);
             console.log('API response: ', loginSuccess);
             if(loginSuccess)
-            {
+            { 
                 const response = await UserService.getUserByEmail(email);
-                const user_id = response.data;
+                console.log("response:",response);
+                Tempid = response.data.user_id;
+                console.log(response);
                 setSuccessMessage('Login Successful, Redirecting....');
                 setTimeout(() => {
-                    history(`/dashboard/${user_id}`);
+                    history(`/dashboard/${Tempid}`);//
                 }, 3000);
             }
             else{
@@ -50,6 +54,9 @@ const Login = () => {
         }
     }
 };
+useEffect(()=>{
+    setAccountId(Tempid);
+},[Tempid,setAccountId]);
 //C:\ReactProjects\Team project\T4--Online-Banking-System\Online-Banking-System\src\components\Login.js
   return (
     <div><NavBar></NavBar> <br/><br/>

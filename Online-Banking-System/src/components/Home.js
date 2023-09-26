@@ -42,10 +42,6 @@ const Home = () => {
         animate={{ opacity: 1,y: -100 }}
         transition={{ duration: 1 }}
       >
-        {/* <div className="bannertext"
-        id = "banner1">
-          CCIBT-1 CCIBT-1 CCIBT-1 CCIBT-1 CCIBT-1
-        </div> */}
       </motion.div>
 
       <Row className="row" style={{marginTop:'10%',backgroundColor:'inherit'}}>
