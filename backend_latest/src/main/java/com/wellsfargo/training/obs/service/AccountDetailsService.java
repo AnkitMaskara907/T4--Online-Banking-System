@@ -25,5 +25,17 @@ public class AccountDetailsService {
 	  public Optional<AccountDetails> loginAccount(String email) {
 			return adRepo.findByEmail(email);
 		}
+	public Optional<AccountDetails> getSingleUser(long id){
+			return adRepo.findById(id);
+		}
+		public void deleteUser(long id) {
+			adRepo.deleteById(id);
+		}
+		public List<AccountDetails> searchUsersByName(String name){
+			return adRepo.findUsersByNameContainingIgnoreCase(name);
+		}
+		public Optional<AccountDetails> approveUser(String email) {
+			return adRepo.findByEmail(email);
+		}
 
 }

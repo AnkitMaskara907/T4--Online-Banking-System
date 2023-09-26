@@ -51,7 +51,7 @@ const [userDetails,setUserDetails]=useState({user_id:"",user_name:"",email:""});
 const [user_name, setUserName] = useState('');
 useEffect(() => {
     // Fetch user details based on the ID
-    UserService.getUserById(id)
+    UserService.getUserById1(id)
       .then(response => {
         setUserDetails(response.data);
       })
@@ -67,7 +67,7 @@ return (
 			<FaIcons.FaBars onClick={showSidebar} />
 		</NavIcon>&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <h1 style={{color:"white"}}> Hi, {userDetails.user_name} </h1>
+        <h1 style={{color:"white"}}> Voyager Bank </h1>
 		</Nav>
 		<h1>Hi, {userDetails.user_name}</h1>
 		<SidebarNav sidebar={sidebar}>

@@ -10,11 +10,7 @@ import { useParams } from "react-router-dom";
 // import { useIdContext } from "../Context/IdContext";
 import UserService from '../service/UserService';
 
-
-
 const Transaction = () => {
-
-
 const history = useNavigate();
 const [account, setAccount] = useState({
     fromAc:'',
@@ -75,11 +71,14 @@ if (Object.keys(validationErrors).length === 0) {
 
 const validateForm = () => {
     let validationErrors = {};
+    if(!account.fromAc){
+      validationErrors.fromAc='The Account does not have a registered email id';
+    }
     if (!account.toAc) {
-      validationErrors.toAc = 'toAc is required!';
+      validationErrors.toAc = 'Beneficiary account does not exist!';
     }
     if (!account.amount) {
-      validationErrors.amount = 'Email is required!';
+      validationErrors.amount = 'Enter non-null amount!';
     }
     if (!account.transactionTypeId) {
       validationErrors.transactionTypeId = 'Transaction type is required';
@@ -90,9 +89,11 @@ const validateForm = () => {
     
     const fetchAccountId = async () => {
         try {
-          const response = await UserService.getAccountByEmail((await UserService.getUserById(id)).data.email);
+          const response = await UserService.getAccountByEmail((await UserService.getUserById1(id)).data.email);
           console.log("Account=",response);
-          const fetchedAccountId = response.data.uid;
+          let fetchedAccountId = response.data.uid;
+          if(!response.data.status)
+            fetchAccountId=null;
           setAccountId(fetchedAccountId);
           setAccount((prevAccount) => ({
             ...prevAccount,
@@ -105,6 +106,27 @@ const validateForm = () => {
 
     fetchAccountId();
   }, [id]);
+  useEffect(()=>{
+    const toAccountDetails=async()=>{
+      try{
+        setErrors({});
+        const response = await UserService.getAccountById(account.toAc);
+        if(!response.data.status){
+          setAccount((prevAccount)=>({
+            ...prevAccount,
+            toAc: null
+          }));
+        }
+      }
+      catch(error){
+        setAccount((prevAccount)=>({
+          ...prevAccount,
+          toAc: null
+        }));
+      }
+    };
+    toAccountDetails();
+  },[account.toAc])
 
   useLayoutEffect(()=>{
     window.scrollTo({
@@ -119,8 +141,11 @@ const validateForm = () => {
         <h2 style={{color:'brown'}}>Transaction</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
+        <div>
+        {errors.fromAc && <p className="error-message">{errors.fromAc}</p>}
+        </div>
       <div className="form-group">
-          <label>toAc:</label>
+          <label>Beneficiary Account Number<span style={{color:'red'}}>*</span>:</label>
           <input
           type="text"
           name="toAc"
@@ -131,7 +156,7 @@ const validateForm = () => {
           {errors.toAc && <p className="error-message">{errors.toAc}</p>}
         </div>
         <div className="form-group">
-          <label>amount:</label>
+          <label>Amount To Transfer<span style={{color:'red'}}>*</span>:</label><br></br>
           <input
             type="number"
             name="amount"
@@ -142,7 +167,7 @@ const validateForm = () => {
           {errors.amount && <p className="error-message">{errors.amount}</p>}
         </div>
         <div className="form-group">
-          <label>transactionTypeId:</label>
+          <label>Transaction type<span style={{color:'red'}}>*</span>:</label>
           <input
             type="text"
             name="transactionTypeId"
@@ -154,7 +179,7 @@ const validateForm = () => {
         </div>
 
         <div className="form-group">
-          <label>remarks:</label>
+          <label>Remarks:</label>
           <input
             type="text"
             name="remarks"

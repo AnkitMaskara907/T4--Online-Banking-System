@@ -3,22 +3,24 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 // import NavBar from './components/NavBar';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee} from '@fortawesome/free-solid-svg-icons';
+import {faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch} from '@fortawesome/free-solid-svg-icons';
 import Register from './components/Register';
 import Login from './components/Login';
 import About from './components/about';
 import AllTransactions from './components/AllTransactions';
+import Admin from './components/admin';
 import { IdProvider } from './Context/IdContext';
 // import Product from './components/Product';
 import Home from './components/Home';
 import Sidebar from "./components/Sidebar";
 import Transaction from './components/Transactions';
 import AccountDetails from './components/AccountDetails';
+import ViewUser from './components/ViewUser';
 
 import AccountSummary from './components/AccountSummary';
 import ChangePassword from './components/ChangePassword';
 import OpenNewAccount from './components/OpenNewAccount';
-library.add(faSignIn, faCameraRetro, faCoffee);
+library.add(faSignIn, faCameraRetro, faCoffee, faBomb,faEdit,faTrash,faList,faPeopleGroup,faSearch);
 
 /*
 	React Router is a standard library for routing in React. 
@@ -65,8 +67,10 @@ function App() {
               <Route path="/accountDetails/:id" element={<AccountDetails/>}/>
               <Route path="/accountSummary/:id" element={<AccountSummary/>}/>
               <Route path="/transaction/:id" element={<Transaction/>}/>
+              <Route path="/admin" element={<Admin />}></Route>
               <Route path="/openNewAccount/:id" element={<OpenNewAccount/>}/>
               <Route path="/changePassword/:id" element={<ChangePassword/>}/>
+              <Route path="/viewUser/:id" element={<ViewUser />}></Route>
             </Routes>  
           </Router>
           </IdProvider>
@@ -81,3 +85,5 @@ function App() {
 }
 
 export default App;
+
+

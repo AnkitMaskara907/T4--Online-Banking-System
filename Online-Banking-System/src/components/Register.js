@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Register.css';
 import AuthenticationService from '../service/AuthenticationService';
+import MyNavbar from './NavBar';
 
 const Register = () => {
   const history = useNavigate();  // Object to navigate 
@@ -84,6 +85,7 @@ const validateForm = () => {
 
   return (
     <div><br/>
+    <MyNavbar/>
       <div className='registration-container'>
         <h2 style={{color:'brown'}}>User Registration</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
