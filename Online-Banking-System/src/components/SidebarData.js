@@ -7,29 +7,33 @@
 import { Link , useParams} from "react-router-dom";
 
 export const SidebarData = [
-{
-	
-	title: "Account Details",
-	path: "/accountDetails/:id",
-},
-{
-	title: "Account Summary",
-	path: "/accountSummary/:id",
-},
-{
-	title: "Transfer Funds",
-	path: "/transaction/:id",
-},
-{
-	title: "Open New Account",
-	path: "/openNewAccount/:id",
-},
-{
-	title: "Change Password",
-	path: "/changePassword/:id",
-},
-{
-	title: "Logout",
-	path: "/"
-}
+	{
+		title: "Open New Account",
+		path: "/openNewAccount/:id",
+	},
+	{
+		
+		title: "Account Details",
+		path: "/accountDetails/:id",
+	},
+	{
+		title: "Account Summary",
+		path: "/accountSummary/:id",
+	},
+	{
+		title: "Transfer Funds",
+		path: "/transaction/:id",
+	},
+	{
+		title: "All Transactions",
+		path: "/allTransactions/:id"
+	},
+	{
+		title: "Change Password",
+		path: "/changePassword/:id",
+	},
+	{
+		title: "Logout",
+		path: "/"
+	}
 ];

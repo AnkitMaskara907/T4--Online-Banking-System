@@ -56,7 +56,7 @@ if (Object.keys(validationErrors).length === 0) {
     alert("Your Transaction is Successful !");
     console.log(accountId);
     setTimeout(() => {
-        history('/allTransactions/'+accountId); // navigates to Login Component
+        history('/allTransactions/'+id); // navigates to Login Component
     }, 3000);
     
     } 
