@@ -1,4 +1,5 @@
 import axios from "axios"
+// import { type } from "os";
 const USER_REST_API_URL = "http://localhost:8085/obs/api/accountDetails";
 
 class UserService{
@@ -61,6 +62,7 @@ class UserService{
       oldPassword: oldPassword,
       newPassword: newPassword
     };
+    
     axios.post('http://localhost:8085/obs/api/users/'+userId+'/changePassword', requestData)
       .then(response => {
         console.log('Password change response:', response.data);

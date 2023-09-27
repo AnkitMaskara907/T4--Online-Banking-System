@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'
 import UserService from '../service/UserService'
 import '../styles/ChangePassword.css'
+import Sidebar from './Sidebar';
 
 const ChangePassword = () => {
+  const history = useNavigate();
   const {id}  = useParams();
   console.log(id)
-  // useEffect(() => {
-  //   console.log(id)
-  // }, [useParams(id)])
+
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
@@ -20,43 +20,25 @@ const ChangePassword = () => {
     setNewPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit  = (event) => {
     // event.preventDefault();
     UserService.changePassword(id, oldPassword, newPassword);
-      // .then(response => {
-      //   console.log('Password change response:', response.data);
-      // })
-      // .catch(error => {
-      //   console.error('Error changing password:', error);
-      // });
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     oldPassword: oldPassword,
-    
-    //     newPassword: newPassword
-    //   })
-    // };
 
-    // axios.post(`http://localhost:8085/obs/api/users/${id}/changePassword`, requestData)
-    // .then(response => {
-    //   console.log('Password change response:', response.data);
-    // })
-    // .catch(error => {
-    //   console.error('Error changing password:', error);
-    // });
+    history(`/dashboard/${id}`);
   };
   
-  useEffect(() => {
-    if (id) {
-      // Fetch the data when id is available
-      handleSubmit();
-    }
-  }, [id]); // Trigger the effect whenever id changes
+  // useEffect(() => {
+  //   if (id) {
+  //     // Fetch the data when id is available
+  //     handleSubmit();
+  //   }
+  // }, [id]); // Trigger the effect whenever id changes
 
   return (
+    <div>
+    <Sidebar></Sidebar>
     <div className ='password-container'>
+      
     <form onSubmit={handleSubmit}>
       <div>
         <label>Old Password:</label>
@@ -68,6 +50,7 @@ const ChangePassword = () => {
       </div>
       <button type="submit">Change Password</button>
     </form>
+    </div>
     </div>
   );
 };

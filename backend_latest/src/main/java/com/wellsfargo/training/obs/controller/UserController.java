@@ -107,15 +107,15 @@ public Boolean loginUser(@Validated @RequestBody User user) throws ResourceNotFo
 
 @PostMapping("/users/{id}/changePassword")
 public ResponseEntity<String> changePassword(
-        @PathVariable("id") String userId,
+        @PathVariable(value = "id") Long userId,
         @RequestBody Map<String, String> passwords) throws ResourceNotFoundException {
-	Long userIdLong = Long.parseLong(userId);
+//	Long userIdLong = Long.parseLong(userId);
 	   String oldPassword = passwords.get("oldPassword");
 	   String newPassword = passwords.get("newPassword");
 	   
-    boolean passwordChanged = uservice.changePassword(userIdLong, oldPassword, newPassword);
+    boolean passwordChanged = uservice.changePassword(userId, oldPassword, newPassword);
     if (passwordChanged) {
-        return ResponseEntity.ok().body("Password changed successfully.");
+        return ResponseEntity.ok().body(oldPassword + " " + newPassword);
     } else {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to change password. Please check your old password.");
     }

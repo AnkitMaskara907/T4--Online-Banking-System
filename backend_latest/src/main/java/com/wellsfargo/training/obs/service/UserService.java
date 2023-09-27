@@ -98,7 +98,7 @@ public class UserService {
                 // Encode and set the new password
                 Base64.Encoder encoder = Base64.getEncoder();
                 String encodedNewPassword = encoder.encodeToString(newPassword.getBytes(StandardCharsets.UTF_8));
-                user.setPassword(encodedNewPassword);
+                user.setPassword(newPassword);
                 saveUser(user);
                 return true;  // Password changed successfully
             } else {

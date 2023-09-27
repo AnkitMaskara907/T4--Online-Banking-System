@@ -38,6 +38,13 @@ transition: 350ms;
 z-index: 10;
 `;
 
+const Greeting = styled.div`
+  margin-left: auto;
+  margin-right: 2rem;
+  color: white;
+  font-weight: 900;
+`;
+
 const SidebarWrap = styled.div`
 width: 100%;
 `;
@@ -48,7 +55,7 @@ const [sidebar, setSidebar] = useState(false);
 const showSidebar = () => setSidebar(!sidebar);
 const { id } = useParams();
 const [userDetails,setUserDetails]=useState({user_id:"",user_name:"",email:""});
-const [user_name, setUserName] = useState('');
+// const [user_name, setUserName] = useState('');
 useEffect(() => {
     // Fetch user details based on the ID
     UserService.getUserById1(id)
@@ -68,8 +75,9 @@ return (
 		</NavIcon>&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <h1 style={{color:"white"}}> Voyager Bank </h1>
+        <Greeting>Hi, {userDetails.user_name}</Greeting>
 		</Nav>
-		<h1>Hi, {userDetails.user_name}</h1>
+		{/* <h1>Hi, {userDetails.user_name}</h1> */}
 		<SidebarNav sidebar={sidebar}>
 		<SidebarWrap>
 			<NavIcon to="#">
