@@ -16,9 +16,11 @@ import com.wellsfargo.training.obs.repository.AccountRepository;
 import com.wellsfargo.training.obs.model.Account;
 import com.wellsfargo.training.obs.model.AccountDetails;
 import com.wellsfargo.training.obs.model.Transaction;
+import com.wellsfargo.training.obs.model.User;
 //import com.welllsfargo.training.obs.model.Transaction;
 //import com.welllsfargo.training.obs.repository.AccountRepository;
 import com.wellsfargo.training.obs.repository.TransactionRepository;
+import com.wellsfargo.training.obs.repository.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -31,6 +33,9 @@ public class TransactionService {
 	
 	@Autowired
 	private AccountDetailsRepository adRepo;
+	
+	@Autowired
+	private UserRepository uRepo;
 	
 	@Transactional
 	public void executeTransaction(Transaction t) /*throws InsufficientFundsException*/ {
@@ -61,8 +66,10 @@ public class TransactionService {
 		return trepo.findTransactionBetweenDates(accounId, startDate, endDate);
 	}
 
-	public List<Transaction> getAllTransactions(Long accountId) {
-		// Pageable pageable = PageRequest.of(0, 10,Sort.by("date").descending());
+	public List<Transaction> getAllTransactions(Long uId) {
+		User u=(uRepo.findById(uId)).orElse(new User());
+		Long accountId=(adRepo.findByEmail(u.getEmail())).orElse(new AccountDetails()).getUid();
+		Pageable pageable = PageRequest.of(0, 10,Sort.by("date").descending());
 		List<Transaction> transactions = trepo.findAllTransactions(accountId);
 		return transactions;
 	}

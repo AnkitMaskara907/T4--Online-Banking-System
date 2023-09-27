@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import UserService from '../service/UserService'
+import '../styles/ChangePassword.css'
 
 const ChangePassword = () => {
   const {id}  = useParams();
@@ -55,6 +56,7 @@ const ChangePassword = () => {
   }, [id]); // Trigger the effect whenever id changes
 
   return (
+    <div className ='password-container'>
     <form onSubmit={handleSubmit}>
       <div>
         <label>Old Password:</label>
@@ -66,6 +68,7 @@ const ChangePassword = () => {
       </div>
       <button type="submit">Change Password</button>
     </form>
+    </div>
   );
 };
 

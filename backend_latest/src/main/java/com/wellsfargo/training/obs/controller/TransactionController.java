@@ -27,7 +27,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/transaction")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class TransactionController {
 	
 	@Autowired
@@ -48,9 +48,6 @@ public class TransactionController {
 		catch(EntityNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Account not found");
 		}
-//		catch(InsufficientFundsException e) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Insufficient funds");
-//		}
 		catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
 		}
@@ -59,8 +56,6 @@ public class TransactionController {
 	@GetMapping("/{accountId}/getRecentTransactions")
 	public ResponseEntity<List<Transaction>> getRecentTransactions(@PathVariable Long accountId) {
 		try {
-//			Account a = cservice.getAccount(customerId);
-//			Long accountId = a.getAccountNo();
 			List<Transaction> transactions = tservice.getLast10Transactions(accountId);
 			return ResponseEntity.ok(transactions);
 		}
