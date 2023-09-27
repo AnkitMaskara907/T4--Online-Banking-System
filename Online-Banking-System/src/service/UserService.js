@@ -56,6 +56,19 @@ class UserService{
   static deleteUser(userId) {
     return axios.delete(USER_REST_API_URL + "/" + userId);
   }
+  static changePassword(userId, oldPassword, newPassword){
+    const requestData = {
+      oldPassword: oldPassword,
+      newPassword: newPassword
+    };
+    axios.post('http://localhost:8085/obs/api/users/'+userId+'/changePassword', requestData)
+      .then(response => {
+        console.log('Password change response:', response.data);
+      })
+      .catch(error => {
+        console.error('Error changing password:', error);
+      });
+  }
   static async searchUserByName(name) {
     try {
       const response = await axios.get(

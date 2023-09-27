@@ -1,9 +1,11 @@
 package com.wellsfargo.training.obs.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wellsfargo.training.obs.exception.ResourceNotFoundException;
@@ -101,6 +104,22 @@ public Boolean loginUser(@Validated @RequestBody User user) throws ResourceNotFo
 	}
 	return isLoggedIn;
 	}
+
+@PostMapping("/users/{id}/changePassword")
+public ResponseEntity<String> changePassword(
+        @PathVariable("id") String userId,
+        @RequestBody Map<String, String> passwords) throws ResourceNotFoundException {
+	Long userIdLong = Long.parseLong(userId);
+	   String oldPassword = passwords.get("oldPassword");
+	   String newPassword = passwords.get("newPassword");
+	   
+    boolean passwordChanged = uservice.changePassword(userIdLong, oldPassword, newPassword);
+    if (passwordChanged) {
+        return ResponseEntity.ok().body("Password changed successfully.");
+    } else {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to change password. Please check your old password.");
+    }
+}
 
 
 }
