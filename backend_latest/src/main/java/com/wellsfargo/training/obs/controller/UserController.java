@@ -55,7 +55,7 @@ public class UserController {
 		}
 	}
 	@GetMapping("/users/{id}")
-	public ResponseEntity<User> getAccountById(@PathVariable(value = "id") Long uId) throws ResourceNotFoundException{
+	public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long uId) throws ResourceNotFoundException{
 		User u = uservice.getSingleUser(uId).orElseThrow(()-> new
 				ResourceNotFoundException("Product Not Found for this ID: "+uId));
 		return ResponseEntity.ok().body(u);
