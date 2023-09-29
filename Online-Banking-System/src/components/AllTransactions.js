@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserService from "../service/UserService";
 import UserSearch from "./UserSearch";
 import AuthenticationService from "../service/AuthenticationService";
+import Sidebar from "./Sidebar";
 
 
 const AllTransactions = ()=>{
@@ -33,8 +34,9 @@ const AllTransactions = ()=>{
 
   return (
     <div>
+      <Sidebar></Sidebar>
       <div className="container"></div>
-      <h1 className="text-warning" style={{backgroundColor:'black'}}>All Transactions</h1>
+      <h1 className="text-warning">All Transactions</h1>
       <br />
       <div className="row justify-content-center">
         <table className="table table-success w-50">

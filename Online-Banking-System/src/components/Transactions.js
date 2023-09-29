@@ -9,6 +9,7 @@ import AuthenticationService from '../service/AuthenticationService';
 import { useParams } from "react-router-dom";
 // import { useIdContext } from "../Context/IdContext";
 import UserService from '../service/UserService';
+import Sidebar from './Sidebar';
 
 const Transaction = () => {
 const history = useNavigate();
@@ -136,7 +137,9 @@ const validateForm = () => {
   },[]);
   return (
 
-<div><br/>
+<div>
+<Sidebar></Sidebar>
+<br/>
       <div className='transaction-container'>
         <h2 style={{color:'brown'}}>Transaction</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}

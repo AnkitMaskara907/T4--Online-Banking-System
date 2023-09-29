@@ -4,6 +4,33 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../service/UserService";
 import UserSearch from "./UserSearch";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { motion } from "framer-motion";
+
+const NavLinkVariants = {
+  //   color:white,
+    hover: {
+      scale: 1.1,
+      textShadow: ['0px 0px 0px rgb(217,217,217)',"0px 0px 2px rgb(255,255,255)"],
+      transition: {
+        type: "spring",
+        stiffness: 200,
+      },
+    },
+  };
+  
+  const underline = (
+    <motion.div
+    transition={{
+      layout : {
+        ease: "easeInOut",
+      }
+    }}
+    className="underline"
+      layoutId="underline" 
+    />
+  );
+  
 
 const Admin = () => {
   const history = useNavigate();
@@ -60,7 +87,16 @@ const Admin = () => {
   };
 
   return (
+
+        
     <div>
+          <Navbar id='navbar' className="Navbar" fixed="top" expand="lg">
+      <Container style={{maxWidth:'90%',color:'antiquewhite'}} >
+        <Navbar.Brand className="NavbarBrand">
+          Voyager Bank
+        </Navbar.Brand>
+        </Container>
+    </Navbar>
       <br />
       <div className="container"></div>
       <h1 className="text-warning">User List</h1>
@@ -153,7 +189,8 @@ const Admin = () => {
         </table>
       </div>
       {message && <div className="alert alert-success">{message}</div>}
-    </div>
+    
+     </div>
   );
 };
 
