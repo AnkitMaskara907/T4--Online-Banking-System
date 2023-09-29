@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { useHref, useNavigate,useParams } from 'react-router-dom'
-
+import '../styles/CreateAccount.css';
 import UserService from '../service/UserService';
 //import '../styles/Register.css';
 //import AuthenticationService from '../service/AuthenticationService';
@@ -17,6 +17,7 @@ const CreateAccount = () => {
   const [dob, setDob] = useState('');
   const [aadhaar, setAadhaar] = useState('');
   const [pan, setPan] = useState('');
+  const [number, setNumber] = useState('');
   
   //for updating user
 //   useEffect(() => {
@@ -35,7 +36,7 @@ const CreateAccount = () => {
 
   const saveOrUpdateUser = (event)=>{
     event.preventDefault();
-    const user={name,email,address,dob,aadhaar,pan};
+    const user={name,email,address,dob,aadhaar,pan,number};
    
         UserService.createAccount(user).then(()=>{
             history(`/dashboard/${id}`);
@@ -65,6 +66,9 @@ const CreateAccount = () => {
   const changePanHandler=(event)=>{
     setPan(event.target.value);
   };
+  const changeNumberHandler=(event)=>{
+    setNumber(event.target.value);
+  };
   const cancel=()=>{
     history('/admin');
   };
@@ -80,7 +84,7 @@ const CreateAccount = () => {
   return (
     <div>
         <br></br>
-        <div className='container'>
+        <div className='createAccount-container'>
             <div className='row'>
                 <div className='form-outline mb-4'>
                     {getTitle()}
@@ -96,7 +100,11 @@ const CreateAccount = () => {
                             </div>
                             <div className='form-group'>
                                 <label>DOB: </label>
-                                <input placeholder="dd-mm-yyy" name="dob" className="form-control" value={dob} onChange={changeDobHandler}/>
+                                <input placeholder="yyyy-mm-dd" name="dob" className="form-control" value={dob} onChange={changeDobHandler}/>
+                            </div>
+                            <div className='form-group'>
+                                <label>Number: </label>
+                                <input placeholder="Number" name="number" className="form-control" value={number} onChange={changeNumberHandler}/>
                             </div>
                             <div className='form-group'>
                                 <label>Address: </label>
