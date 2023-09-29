@@ -49,7 +49,7 @@ const ChangePassword = () => {
         <input type="password" value={newPassword} onChange={handleNewPasswordChange} />
         
       </div>
-      <br></br>
+    <br></br>
       <button type="submit">Change Password</button>
     </form>
     </div>
