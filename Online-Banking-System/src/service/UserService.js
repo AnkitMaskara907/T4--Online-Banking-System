@@ -10,6 +10,13 @@ class UserService{
       console.error("Login Error : ", error);
     }
   }
+  static createAccount(user){
+    try{
+    return axios.post(USER_REST_API_URL,user);
+    }catch(error){
+      console.error("Error:", error);
+    }
+  }
   static getUserByEmail(email){
     try{
         return axios.get('http://localhost:8085/obs/api/users/email' + '/'+ email);
