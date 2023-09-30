@@ -67,7 +67,6 @@ const OpenNewAccount = () => {
   return (
     <div>
         <Sidebar></Sidebar>
-        <h1>Open New Account</h1>
     <div>
     <br></br>
     <div className='createAccount-container'>

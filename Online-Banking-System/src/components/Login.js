@@ -40,12 +40,15 @@ const Login = () => {
                 Tempid = response.data.user_id;
                 console.log(response);
                 setSuccessMessage('Login Successful, Redirecting....');
+                setErrorMessage('');
                 setTimeout(() => {
                     history(`/dashboard/${Tempid}`);//
                 }, 3000);
             }
             else{
                 setErrorMessage('Invalid email or Password');
+                setSuccessMessage('');
+                return;
             }
         }
         catch (error){
@@ -61,7 +64,7 @@ useEffect(()=>{
   return (
     <div><NavBar></NavBar> <br/><br/>
         <div className ='login-container'>
-            <h2 style = {{color: 'green'}}>User Login</h2>
+            <h2>Login</h2>
             <div className ='form-group'>
                 <label>Email: </label>
                 <input type='email' className='form-control' value={email} onChange={(e)=>setEmail(e.target.value)}/>
@@ -70,7 +73,7 @@ useEffect(()=>{
                 <label>Password: </label>
                 <input type='password' className='form-control' value={password} onChange={(e)=>setPassword(e.target.value)}/>
             </div>
-            <button className='btn-btn-primary' onClick={() => handleLogin()}>Login</button>
+            <button className='btn-login' onClick={() => handleLogin()}>Login</button>
             {errorMessage && <p className = 'error-message'>{errorMessage}</p>}
             {successMessage && <p className = 'success-message'>{successMessage}</p>}
         </div>

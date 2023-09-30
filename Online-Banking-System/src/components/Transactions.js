@@ -194,7 +194,7 @@ const validateForm = () => {
         </div>
         <div className="form-group">
           <button type="submit" className="submit-button">
-            submit
+            Submit
           </button>
         </div>
         </form>

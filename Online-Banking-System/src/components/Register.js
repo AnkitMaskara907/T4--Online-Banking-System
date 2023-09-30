@@ -67,6 +67,8 @@ const validateForm = () => {
   let validationErrors = {};
   if (!user.user_name) {
     validationErrors.user_name = 'User name is required!';
+  }else if (user.user_name.includes(' ')) {
+    validationErrors.user_name = 'Username should not contain spaces.';
   }
   if (!user.email) {
     validationErrors.email = 'Email is required!';
