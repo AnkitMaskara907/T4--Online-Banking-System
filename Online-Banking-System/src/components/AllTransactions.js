@@ -44,10 +44,10 @@ const AllTransactions = ()=>{
             <tr className="table-danger">
               <th> Transaction ID</th>
               <th> Date</th>
-              <th> Account</th>
               <th> Mode of Transaction</th>
               <th> Amount</th>
               <th> Transaction Type</th>
+              <th> Account</th>
               <th> Remarks</th>
             </tr>
           </thead>
@@ -56,7 +56,6 @@ const AllTransactions = ()=>{
               <tr key={transaction.transactionId}>
                 <td> {transaction.transactionId} </td>
                 <td> {transaction.date} </td>
-                <td> {transaction.toAc} </td>
                 <td> {transaction.transactionTypeId} </td>
                 <td>
                 <span style={{ color: (accntId == transaction.toAc) ? 'green' : 'red' }}>
@@ -69,6 +68,7 @@ const AllTransactions = ()=>{
                 </span>
                 </td>
                 <td> {accntId==transaction.toAc?"Credit":"Debit"} </td>
+                <td> {(accntId==transaction.toAc)?transaction.fromAc:transaction.toAc} </td>
                 <td> {transaction.remarks} </td>
               </tr>
             ))}

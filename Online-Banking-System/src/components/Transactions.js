@@ -137,9 +137,7 @@ const validateForm = () => {
   },[]);
   return (
 
-<div>
-<Sidebar></Sidebar>
-<br/>
+<div><br/>
       <div className='transaction-container'>
         <h2 style={{color:'brown'}}>Transaction</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
@@ -200,6 +198,8 @@ const validateForm = () => {
         </form>
       </div>
     </div>
+// </div>
+
 )};
 
 export default Transaction;
