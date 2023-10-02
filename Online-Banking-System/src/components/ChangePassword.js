@@ -21,19 +21,12 @@ const ChangePassword = () => {
   };
 
   const handleSubmit  = (event) => {
-    // event.preventDefault();
+
     UserService.changePassword(id, oldPassword, newPassword);
 
     history(`/dashboard/${id}`);
   };
   
-  // useEffect(() => {
-  //   if (id) {
-  //     // Fetch the data when id is available
-  //     handleSubmit();
-  //   }
-  // }, [id]); // Trigger the effect whenever id changes
-
   return (
     <div>
     <Sidebar></Sidebar>

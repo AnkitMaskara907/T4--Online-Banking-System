@@ -32,7 +32,20 @@ const handleChange = (e) => {
         [child]: value
       }
     }));
-  } 
+  } else if (name === 'password') {
+    setUser((prevUser) => ({
+      ...prevUser,
+      password: value,
+      confirmPassword: ''
+    }));
+  } else if (name === 'confirmPassword') {
+    // Clear the error for Confirm Password when user starts typing
+    setErrors((prevErrors) => ({ ...prevErrors, confirmPassword: '' }));
+    setUser((prevUser) => ({
+      ...prevUser,
+      confirmPassword: value
+    }));
+  }
   else {
     setUser((prevUser) => ({
       ...prevUser,
@@ -48,7 +61,6 @@ const handleSubmit = async (e) => {
     try {
       await AuthenticationService.registeruser(user);
       setSuccessMessage('Registration successful!');
-      // alert("Registration Successful");
       setTimeout(() => {
         history('/login'); // navigates to Login Component
       }, 3000);
@@ -78,6 +90,12 @@ const validateForm = () => {
     validationErrors.password = 'Password is required.';
   } else if (user.password.length < 6) {
     validationErrors.password = 'Password must be at least 6 characters.';
+  } 
+
+  if (!user.confirmPassword) {
+    validationErrors.confirmPassword = 'Confirm Password is required.';
+  } else if (user.confirmPassword !== user.password) {
+    validationErrors.confirmPassword = 'Passwords do not match.';
   }
 
   return validationErrors;
@@ -130,12 +148,12 @@ const validateForm = () => {
           <label>Confirm Password:</label>
           <input
             type="password"
-            name="confirm-password"
-            value={user.password}
+            name="confirmPassword"
+            value={user.confirmPassword}
             onChange={handleChange}
-            className={errors.password && 'error'}
+            className={errors.confirmPassword && 'error'}
           />
-          {errors.password && <p className="error-message">{errors.password}</p>}
+          {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
         </div>
         <div className="form-group">
           <button type="submit" className="submit-button">
