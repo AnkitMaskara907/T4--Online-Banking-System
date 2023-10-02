@@ -72,11 +72,11 @@ class UserControllerTest {
 		when(uservice.saveUser(any(User.class))).thenReturn(user);
 		
 		//junit
-		ResponseEntity<User> re= ucontroller.saveUser(user);
+		User re= ucontroller.saveUser(user);
 		
-		assertEquals(HttpStatus.CREATED, re.getStatusCode());
-		assertEquals("rod@spring.com", re.getBody().getEmail());
-		assertEquals(encodedString, re.getBody().getPassword());
+		//assertEquals(HttpStatus.CREATED, re.getStatusCode());
+		assertEquals("rod@spring.com", re.getEmail());
+		assertEquals(encodedString, re.getPassword());
 		
 		//mocikito
 		// Validates the service methods are called or not
@@ -113,11 +113,11 @@ class UserControllerTest {
 		
 		when(uservice.listAll()).thenReturn(mockUser);
 		
-		ResponseEntity<List<User>> responseProducts = ucontroller.getAllUsers();
+		List<User> responseProducts = ucontroller.getAllUsers();
 		
-		assertEquals(2,responseProducts.getBody().size());
-		assertEquals("rod@spring.com",responseProducts.getBody().get(0).getEmail());
-		assertEquals("henry@spring.com",responseProducts.getBody().get(1).getEmail());
+		assertEquals(2,responseProducts.size());
+		assertEquals("rod@spring.com",responseProducts.get(0).getEmail());
+		assertEquals("henry@spring.com",responseProducts.get(1).getEmail());
 		
 		verify(uservice,times(1)).listAll();	
 	}
@@ -134,9 +134,9 @@ class UserControllerTest {
 		assertEquals(x.getEmail(), user.getEmail());
 		assertEquals(x.getPassword(), user.getPassword());
 		
-		ResponseEntity<Boolean> result =ucontroller.loginUser(user);
+		Boolean result =ucontroller.loginUser(user);
 		
-		assertTrue(result.getBody());
+		assertTrue(result);
 		
 		verify(uservice, times(2)).loginUser("rod@spring.com");
 	}
