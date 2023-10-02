@@ -17,10 +17,11 @@ const OpenNewAccount = () => {
   const [aadhaar, setAadhaar] = useState('');
   const [pan, setPan] = useState('');
   const [number, setNumber] = useState('');
+  const [balance, setBalance] = useState('');
   
   const saveOrUpdateUser = (event)=>{
     event.preventDefault();
-    const user={name,email,address,dob,aadhaar,pan,number};
+    const user={name,email,address,dob,aadhaar,pan,number,balance};
    
         UserService.createAccount(user).then(()=>{
             history(`/dashboard/${id}`);
@@ -53,6 +54,9 @@ const OpenNewAccount = () => {
   const changeNumberHandler=(event)=>{
     setNumber(event.target.value);
   };
+  const changeBalanceHandler=(event)=>{
+    setBalance(event.target.value);
+  }
   const cancel=()=>{
     history('/admin');
   };
@@ -94,6 +98,10 @@ const OpenNewAccount = () => {
                         <div className='form-group'>
                             <label>Address: </label>
                             <input placeholder="Address" name="address" className="form-control" value={address} onChange={changeAddressHandler}/>
+                        </div>
+                        <div className='form-group'>
+                            <label>Deposit amount: </label>
+                            <input placeholder="Amount" name="balance" className="form-control" value={balance} onChange={changeBalanceHandler}/>
                         </div>
                         <div className='form-group'>
                             <label>Aadhaar: </label>
