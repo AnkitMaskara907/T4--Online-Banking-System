@@ -6,9 +6,11 @@ import MyButton from "./MyButton";
 import RegisterSVG from "../Abstracts/RegisterSVG";
 import "../styles/RegisterSVG.css";
 import "../styles/Home.css";
+import "../styles/shipSvg.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from './NavBar';
 import { Parallax } from 'react-scroll-parallax';
+import Ship from "../Abstracts/Ship";
 
 const low={
   color:"red",
@@ -47,7 +49,9 @@ const Home = () => {
       <Row className="row" style={{marginTop:'10%',backgroundColor:'inherit'}}>
         <Col className="col-7 my-auto">
           <Container className="d-flex flex-column justify-content-center align-content-center">
-            <Row className="my-4 align-self-center text-center">Online Banking System</Row>
+            <Row className="my-4 align-self-center text-center shipSvg">
+              <Ship/>
+            </Row>
             
           </Container>
         </Col>
