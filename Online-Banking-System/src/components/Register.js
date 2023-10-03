@@ -64,7 +64,6 @@ const handleSubmit = async (e) => {
       setTimeout(() => {
         history('/login'); // navigates to Login Component
       }, 3000);
-    
     } 
     catch (error) {
       console.error('Registration error', error);

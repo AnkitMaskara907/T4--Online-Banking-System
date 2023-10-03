@@ -7,7 +7,17 @@ import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import UserService from '../service/UserService'
+import { Container, Row, Col } from "react-bootstrap";
+import {motion, useViewportScroll, useTransform} from 'framer-motion';
 
+import RegisterSVG from "../Abstracts/RegisterSVG";
+import "../styles/RegisterSVG.css";
+import "../styles/Home.css";
+import "../styles/shipSvg.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from './NavBar';
+import { Parallax } from 'react-scroll-parallax';
+import Ship from "../Abstracts/Ship";
 const Nav = styled.div`
 background: #15171c;
 height: 80px;
@@ -50,10 +60,22 @@ width: 100%;
 `;
 
 const Sidebar = () => {
+  const { id } = useParams();
+  const redirectToLink1 = () => {
+    const targetUrl = 'http://localhost:3000/openNewAccount/'+id;
+    window.location.href = targetUrl;
+  };
+  const redirectToLink2 = () => {
+    const targetUrl = 'http://localhost:3000/transaction/'+id;
+    window.location.href = targetUrl;
+  };
+  const redirectToLink3 = () => {
+    const targetUrl = 'http://localhost:3000/changePassword/'+id;
+    window.location.href = targetUrl;
+  };
 const [sidebar, setSidebar] = useState(false);
 
 const showSidebar = () => setSidebar(!sidebar);
-const { id } = useParams();
 const [userDetails,setUserDetails]=useState({user_id:"",user_name:"",email:""});
 // const [user_name, setUserName] = useState('');
 useEffect(() => {
@@ -68,7 +90,7 @@ useEffect(() => {
   }, [id]);
 return (
 	<>
-	<IconContext.Provider value={{ color: "#fff" }}>
+  <IconContext.Provider value={{ color: "#fff" }}>
 		<Nav>
 		<NavIcon to="#">
 			<FaIcons.FaBars onClick={showSidebar} />
@@ -86,6 +108,7 @@ return (
 			{SidebarData.map((item, index) => {
   const linkTo = item.path.replace(':id', id); // Replace :id with the actual id
 
+  
   return (
     <SubMenu
       item={{ ...item, path: linkTo }}
@@ -105,6 +128,36 @@ return (
 		</SidebarWrap>
 		</SidebarNav>
 	</IconContext.Provider>
+  { (window.location.href=="http://localhost:3000/dashboard/"+id)&&
+  (<Container className="container-lg" style={{backgroundColor:"inherit"}}>       
+      <Row className="row" style={{backgroundColor:'inherit'}}>
+        <Col className="col-7 my-auto">
+              <Ship/>            
+        </Col>
+        
+        <Col className="col-5" >
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink1}>
+          <RegisterSVG/>
+          Open Account
+          </Row>
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink2}>
+          <RegisterSVG/>
+          Make A Transaction
+          </Row>
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink3}>
+          <RegisterSVG/>
+          Change Password
+          </Row>
+          {/* <RegisterSVG/>
+          Make A Transaction */}
+        </Col>
+      </Row>
+      <Row className="row">
+        <Col className="col-7 my-auto">
+            {/* <Illustration /> */}
+        </Col>
+      </Row>
+    </Container>)}
 	</>
 );
 };

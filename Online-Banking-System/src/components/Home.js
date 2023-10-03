@@ -30,7 +30,11 @@ const Home = () => {
       behavior:'instant',  
     });
   },[]);
-  const redirectToLink = () => {
+  const redirectToLink1 = () => {
+    const targetUrl = 'http://localhost:3000/register';
+    window.location.href = targetUrl;
+  };
+  const redirectToLink2 = () => {
     const targetUrl = 'http://localhost:3000/login';
     window.location.href = targetUrl;
   };
@@ -57,15 +61,15 @@ const Home = () => {
         </Col>
         
         <Col className="col-5" >
-          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink}>
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink1}>
+          <RegisterSVG/>
+          Register
+          </Row>
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink2}>
           <RegisterSVG/>
           Login
           </Row>
-          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink}>
-          <RegisterSVG/>
-          Make A Transaction
-          </Row>
-          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink}>
+          <Row className="svg-container svg-link" style={{marginTop:'10%'}} onClick={redirectToLink2}>
           <RegisterSVG/>
           Have Queries ?
           </Row>

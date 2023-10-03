@@ -28,6 +28,10 @@ export const SidebarData = [
 		path: "/changePassword/:id",
 	},
 	{
+		title: "Dashboard",
+		path: "/dashboard/:id",
+	},
+	{
 		title: "Logout",
 		path: "/"
 	}
