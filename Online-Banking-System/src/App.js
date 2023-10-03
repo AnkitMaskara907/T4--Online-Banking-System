@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 // import NavBar from './components/NavBar';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch, faSquareArrowUpRight, faDown} from '@fortawesome/free-solid-svg-icons';
+import {faSignIn, faCameraRetro, faCoffee, faBomb, faEdit, faTrash, faList, faPeopleGroup, faSearch, faSquareArrowUpRight, faDown, faIndianRupeeSign} from '@fortawesome/free-solid-svg-icons';
 import Register from './components/Register';
 import Login from './components/Login';
 import About from './components/about';
@@ -20,7 +20,7 @@ import ViewUser from './components/ViewUser';
 import AccountSummary from './components/AccountSummary';
 import ChangePassword from './components/ChangePassword';
 import OpenNewAccount from './components/OpenNewAccount';
-library.add(faSignIn, faCameraRetro, faCoffee, faBomb,faEdit,faTrash,faList,faPeopleGroup,faSearch,faSquareArrowUpRight);
+library.add(faSignIn, faCameraRetro, faCoffee, faBomb,faEdit,faTrash,faList,faPeopleGroup,faSearch,faSquareArrowUpRight,faIndianRupeeSign);
 
 /*
 	React Router is a standard library for routing in React. 

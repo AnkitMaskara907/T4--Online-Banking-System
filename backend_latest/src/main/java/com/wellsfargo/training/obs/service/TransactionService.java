@@ -56,7 +56,9 @@ public class TransactionService {
 		trepo.save(t);
 	}
 	
-	public List<Transaction> getLast10Transactions(Long accountId) {
+	public List<Transaction> getLast10Transactions(Long uId) {
+		User u=(uRepo.findById(uId)).orElse(new User());
+		Long accountId=(adRepo.findByEmail(u.getEmail())).orElse(new AccountDetails()).getUid();
 		Pageable pageable = PageRequest.of(0, 10,Sort.by("date").descending());
 		List<Transaction> transactions = trepo.findLast10TransactionsByAccount(accountId, pageable);
 		return transactions;

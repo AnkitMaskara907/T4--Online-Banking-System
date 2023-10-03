@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar";
 
 const AllTransactions = ()=>{
   const {id}=useParams();
-  const [accntId,setAccntId]=useState();
+  const [accnt,setAccnt]=useState([]);
   const [transactions, setTransactions] = useState([{}]);
   const [message, setMessage] = useState("");
 //   const [accntId,setAccntId]=useState();
@@ -20,7 +20,7 @@ const AllTransactions = ()=>{
         try{
             const userResponse=await UserService.getAccountByEmail((await UserService.getUserById1(id)).data.email);
             console.log("accntId:",userResponse.data.uid);
-            setAccntId(userResponse.data.uid);
+            setAccnt(userResponse.data);
             const response=await AuthenticationService.allTransactions(id);
             console.log("Response:",response);
             setTransactions(Object.values(response));
@@ -35,6 +35,10 @@ const AllTransactions = ()=>{
   return (
     <div>
       <Sidebar></Sidebar>
+      <br/>
+      <div style={{border:'1px solid',width:'30%',borderRadius: '10px',padding:'5px',verticalAlign:'middle !important'}}>
+        <h4 style={{color:'#f7786f',textAlign:'center'}}>Your Current Bank Balance: {<FontAwesomeIcon icon="indian-rupee-sign"/>}{accnt.balance}</h4>
+      </div>
       <div className="container"></div>
       <h1 className="text-warning">All Transactions</h1>
       <br />
@@ -58,17 +62,17 @@ const AllTransactions = ()=>{
                 <td> {transaction.date} </td>
                 <td> {transaction.transactionTypeId} </td>
                 <td>
-                <span style={{ color: (accntId == transaction.toAc) ? 'green' : 'red' }}>
-                    {accntId == transaction.toAc ? (
+                <span style={{ color: (accnt.uid == transaction.toAc) ? 'green' : 'red' }}>
+                    {accnt.uid == transaction.toAc ? (
                     <FontAwesomeIcon icon="square-arrow-up-right" />
                     ) : (
                     <FontAwesomeIcon icon="square-arrow-up-right" rotation={180} />
                     )}
-                    &nbsp;{transaction.amount}
+                    &nbsp;<FontAwesomeIcon icon="indian-rupee-sign"/>{transaction.amount}
                 </span>
                 </td>
-                <td> {accntId==transaction.toAc?"Credit":"Debit"} </td>
-                <td> {(accntId==transaction.toAc)?transaction.fromAc:transaction.toAc} </td>
+                <td> {accnt.uid==transaction.toAc?"Credit":"Debit"} </td>
+                <td> {(accnt.uid==transaction.toAc)?transaction.fromAc:transaction.toAc} </td>
                 <td> {transaction.remarks} </td>
               </tr>
             ))}

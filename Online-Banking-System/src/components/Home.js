@@ -76,12 +76,12 @@ const Home = () => {
         <Col className="col-5 my-auto">
           <Row></Row>
           <Row className="md-2">
-            <Row className="B">ELEMENT<div style={low}></div></Row>
-            <Row className="S">ELEMENT<div style={high}></div></Row>
+            <Row className="B"><div style={low}></div></Row>
+            <Row className="S"><div style={high}></div></Row>
           </Row>
-          <Row className="my-4">
+          {/* <Row className="my-4">
             <MyButton text="Explore" link="/explore" />
-          </Row>
+          </Row> */}
         </Col>
       </Row>
     </Container>

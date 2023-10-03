@@ -72,7 +72,7 @@ const OpenNewAccount = () => {
     <div>
         <Sidebar></Sidebar>
     <div>
-    <br></br>
+    {/* <br></br> */}
     <div className='createAccount-container'>
         <div className='row'>
             <div className='form-outline mb-4'>

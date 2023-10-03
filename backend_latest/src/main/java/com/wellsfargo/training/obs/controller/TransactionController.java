@@ -86,8 +86,6 @@ public class TransactionController {
 	@GetMapping("/{accountId}/getAllTransactions")
 	public ResponseEntity<List<Transaction>> getAllTransactions(@PathVariable Long accountId) {
 		try {
-//			Account a = cservice.getAccount(customerId);
-//			Long accountId = a.getAccountNo();
 			List<Transaction> transactions = tservice.getAllTransactions(accountId);
 			return ResponseEntity.ok(transactions);
 		}

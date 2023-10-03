@@ -8,7 +8,15 @@
     background-color: #f5f5f5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+    .table td,th {
+      align-items: center !important;
+      justify-content: center !important;
+      vertical-align: middle !important;
+      /* height: 100px; Set a fixed height or adjust as needed */
+    }
+    td,th{
+      border: 0.5px solid rgba(14, 29, 3, 0.31);
+    }
     .registration-form {
       display: flex;
       flex-direction: column;

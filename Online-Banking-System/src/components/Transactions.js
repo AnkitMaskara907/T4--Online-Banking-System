@@ -16,15 +16,27 @@ const history = useNavigate();
 const [account, setAccount] = useState({
     fromAc:'',
     toAc: '',
-    date:'2023-09-26',
+    date:new Date(),
     amount: 0,
     transactionTypeId:'',
     remarks: '',
   });
+const [currentTime, setCurrentTime] = useState(new Date());
 const {id} = useParams();
 const [accountId, setAccountId] = useState('');
 const [errors, setErrors] = useState({});
 const [successMessage, setSuccessMessage] = useState('');
+const [paymentMode, setPaymentMode] = useState('');
+
+
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    setCurrentTime(new Date()); 
+  }, 1000); 
+  return () => {
+    clearInterval(intervalId);
+  };
+}, [id]); 
 
 const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +51,9 @@ const handleChange = (e) => {
       }));
     } 
     else {
+      if (name === 'transactionTypeId') {
+        setPaymentMode(value);
+      }
       setAccount((prevAccount) => ({
         ...prevAccount,
         [name]: value
@@ -67,13 +82,14 @@ if (Object.keys(validationErrors).length === 0) {
     }
 } else {
     setErrors(validationErrors);
+    console.log("Error submitting the transaction");
 }
 };
 
 const validateForm = () => {
     let validationErrors = {};
     if(!account.fromAc){
-      validationErrors.fromAc='The Account does not have a registered email id';
+      validationErrors.fromAc='The Account does not exist or might not have been activated yet !';
     }
     if (!account.toAc) {
       validationErrors.toAc = 'Beneficiary account does not exist!';
@@ -93,16 +109,20 @@ const validateForm = () => {
           const response = await UserService.getAccountByEmail((await UserService.getUserById1(id)).data.email);
           console.log("Account=",response);
           let fetchedAccountId = response.data.uid;
+          {console.log("Time:",currentTime)}
           if(!response.data.status)
             fetchAccountId=null;
           setAccountId(fetchedAccountId);
+          // setCurrentTime(currentTime);
           setAccount((prevAccount) => ({
             ...prevAccount,
+            date:currentTime.toLocaleString(),
             fromAc: fetchedAccountId,
           }));
         } catch (error) {
           console.error('Error fetching accountId', error);
         }
+        console.log("Currenttime is :",account.date);
       };
 
     fetchAccountId();
@@ -136,8 +156,8 @@ const validateForm = () => {
     });
   },[]);
   return (
-
-<div><br/>
+<div>
+<Sidebar/>
       <div className='transaction-container'>
         <h2 style={{color:'brown'}}>Transaction</h2>
         {successMessage && <p className="success-message">{successMessage}</p>}
@@ -169,14 +189,19 @@ const validateForm = () => {
         </div>
         <div className="form-group">
           <label>Transaction type<span style={{color:'red'}}>*</span>:</label>
-          <input
-            type="text"
+          <br/>
+          <select
             name="transactionTypeId"
-            value={account.transactionTypeId}
-            onChange={handleChange}
+            value={paymentMode}
+            onChange={(handleChange)}
             className={errors.transactionTypeId && 'error'}
-          />
-          {errors.password && <p className="error-message">{errors.password}</p>}
+          >
+            <option value="">Select..</option>
+            <option value="NEFT">NEFT</option>
+            <option value="IMPS">IMPS</option>
+            <option value="RTGS">RTGS</option>
+          </select>
+          {errors.transactionTypeId && <p className="error-message">{errors.transactionTypeId}</p>}
         </div>
 
         <div className="form-group">

@@ -45,9 +45,9 @@ class AuthenticationService{
             console.error('Transaction Error',error);
         }
     }
-    static async lastTenTransactions(accountId){
+    static async lastTenTransactions(uId){
         try{
-            const response = await axios.get('http://localhost:8085/obs/transaction/'+accountId+'getRecentTransactions');
+            const response = await axios.get('http://localhost:8085/obs/transaction/'+uId+'/getRecentTransactions');
             return response.data;
         }
         catch(error){

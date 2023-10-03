@@ -12,11 +12,6 @@ export const SidebarData = [
 		path: "/openNewAccount/:id",
 	},
 	{
-		
-		title: "Account Details",
-		path: "/accountDetails/:id",
-	},
-	{
 		title: "Account Summary",
 		path: "/accountSummary/:id",
 	},
