@@ -84,8 +84,9 @@ class TransactionControllerTest {
 		
 	}
 	public List<Transaction> getTransactionDetails() throws ParseException {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date(df.parse("2000-09-25").getTime());
+		// SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		// Date date = new Date(df.parse("2000-09-25").getTime());
+		String date="03/10/2023, 17:59:18";
 		List<Transaction> mockDetails=new ArrayList<>();
 		Transaction t1= new Transaction();
 		t1.setAmount(1000);
