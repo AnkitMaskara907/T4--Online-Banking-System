@@ -1,0 +1,6 @@
+.shipSvg{
+    transition: transform 0.3s ease;
+}
+.shipSvg:hover{
+    /* transform: translateX(-10px) translateY(10px); */
+}

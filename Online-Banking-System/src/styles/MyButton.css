@@ -1,0 +1,28 @@
+/* @import "../../Styles/theme.css"; */
+
+.myButton{
+    font-size: 0.6em !important;
+    width: min-content;
+    color: var(--text) !important;
+    border-color: var(--text) !important;
+    z-index: 100 !important;
+}
+
+.myButton:hover{
+    background-color: var(--text) !important;
+    color: var(--background) !important;
+}
+
+.myButton:active{
+    box-shadow: none;
+}
+
+.myButton:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.myButton:disabled{
+    background-color: var(--secondary) !important;
+    color: var(--background) !important;
+}

@@ -1,0 +1,32 @@
+/* @import "../Styles/theme.css"; */
+
+.row{
+    /* padding-top: 2em; */
+    /* margin-top: 20% !important;
+    margin-left: auto;margin-right: auto; margin-bottom: 20px; */
+    /* min-height: 100vh; */
+    font-size: auto;
+    font-weight: 700;
+    width: 100%;
+    background-color: 'rgb(151, 20, 77)';
+}
+
+.banner{
+    transform-origin: center;
+    position: absolute;
+    left: 20%;
+    top: -10%;
+    z-index: -2;
+    transform: rotate(-90deg);
+    /* color: var(--hover); */
+    width: 100%;
+    font-weight: 900;
+    /* overflow: hidden; */
+}
+
+.bannertext{
+    position: relative;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    font-size: 19rem !important;
+}
